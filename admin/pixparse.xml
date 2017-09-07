@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+    <name>com_pixparse</name>
+    <creationDate>2017-09-01</creationDate>
+    <copyright>You Rock AB 2003-2017 All Rights Reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <author>Johan Sundell</author>
+    <authorEmail>johan@pixpro.net</authorEmail>
+    <authorUrl>http://pixpro.net</authorUrl>
+    <version>1.0.0</version>
+    <description>TODO</description>
+
+    <files folder="site">
+        <filename>index.html</filename>
+        <filename>pixparse.php</filename>
+    </files>
+    <administration>
+        <submenu>
+        </submenu>
+        <files folder="administrator">
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>pixparse.php</filename>
+            <folder>controllers</folder>
+            <folder>language</folder>
+            <folder>models</folder>
+            <folder>views</folder>
+            <folder>lib</folder>
+        </files>
+        <languages folder="administrator/language">
+			<language tag="en-GB">en-GB/en-GB.com_pixparse.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_pixparse.sys.ini</language>
+        </languages>
+    </administration>
+    <config>
+        <fields name="params">
+            <fieldset name="component">
+                <field name="save_history" default="0" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>
+<!-- Component built by the Joomla Component Creator -->
+<!-- http://www.component-creator.com/ -->
