@@ -17,7 +17,7 @@
     <administration>
         <submenu>
         </submenu>
-        <files folder="administrator">
+        <files folder="admin">
             <filename>access.xml</filename>
             <filename>config.xml</filename>
             <filename>controller.php</filename>
@@ -29,7 +29,7 @@
             <folder>views</folder>
             <folder>lib</folder>
         </files>
-        <languages folder="administrator/language">
+        <languages folder="admin/language">
 			<language tag="en-GB">en-GB/en-GB.com_pixparse.ini</language>
 			<language tag="en-GB">en-GB/en-GB.com_pixparse.sys.ini</language>
         </languages>
