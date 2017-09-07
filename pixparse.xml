@@ -7,8 +7,8 @@
     <author>Johan Sundell</author>
     <authorEmail>johan@pixpro.net</authorEmail>
     <authorUrl>http://pixpro.net</authorUrl>
-    <version>1.0.0</version>
-    <description>TODO</description>
+    <version>1.0.1</version>
+    <description>COM_PIXPARSE_XML_DESCRIPTION</description>
 
     <files folder="site">
         <filename>index.html</filename>
