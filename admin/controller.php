@@ -2,7 +2,7 @@
 
 /**
  * @package    Com_Pixparse
- * @author     Johan Sundell <johan@pixpro.net>
+ * @author     Johan Sundell <labs@pixpro.net>
  * @copyright  You Rock AB 2003-2017 All Rights Reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */

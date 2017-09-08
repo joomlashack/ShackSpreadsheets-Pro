@@ -1,6 +1,6 @@
 <?php
 /**
-* @author		Johan Sundell <johan@pixpro.net>
+* @author		Johan Sundell <labs@pixpro.net>
 * @link			https://www.pixpro.net/labs
 * @copyright	Copyright © You Rock AB 2003-2017 All Rights Reserved.
 * @license		GNU General Public License version 2 or later; see LICENSE.txt
@@ -75,7 +75,7 @@ JHtml::_('jquery.framework');
 <form enctype="multipart/form-data" method="post" action="<?php echo JRoute::_( 'index.php?option=com_pixparse&task=workbook.parsefile&editor='.$this->editor );?>" >
 	<?php echo $this->form->renderField( 'file_upload' ); ?>
 	<?php echo JHtml::_( 'form.token' ); ?>
-	<button type="submit"><?php echo JText::_( 'JSUBMIT' );?></button>
+	<button type="submit"><?php echo JText::_( 'COM_PIXPARSE_WORKBOOK_BUTTON_PARSE' );?></button>
 </form>
 <?php if( $this->data != '' ): ?>
 	<button onclick="Pixparse.insert();window.parent.jModalClose();"><?php echo JText::_( 'COM_PIXPARSE_WORKBOOK_BUTTON_INSERT' ); ?></button>
