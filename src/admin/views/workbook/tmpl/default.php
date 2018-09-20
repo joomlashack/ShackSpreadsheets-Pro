@@ -1,8 +1,9 @@
 <?php
 /**
 * @author		Johan Sundell <labs@pixpro.net>
-* @link			https://www.pixpro.net/labs
-* @copyright	Copyright © You Rock AB 2003-2017 All Rights Reserved.
+* @author       Joomlashack <help@joomlashack.com> - https://www.joomlashack.com
+* @link			https://www.joomlashack.com/joomla-extensions/shack-spreadsheets/
+* @copyright	Copyright (C) 2018. All rights reserved.
 * @license		GNU General Public License version 2 or later; see LICENSE.txt
 */
 // No direct access
@@ -16,7 +17,7 @@ JHtml::_('jquery.framework');
 	{
 		'use strict';
 
-		window.Pixparse = {
+		window.Shackspreadsheets = {
 
 			initialize: function ()
 			{
@@ -66,22 +67,22 @@ JHtml::_('jquery.framework');
 
 		$(function ()
 		{
-			window.Pixparse.initialize();
+			window.Shackspreadsheets.initialize();
 		});
 
 }(jQuery, document));
 //-->
 </script>
-<form enctype="multipart/form-data" method="post" action="<?php echo JRoute::_( 'index.php?option=com_pixparse&task=workbook.parsefile&editor='.$this->editor );?>" >
+<form enctype="multipart/form-data" method="post" action="<?php echo JRoute::_( 'index.php?option=com_shackspreadsheets&task=workbook.parsefile&editor='.$this->editor );?>" >
 	<?php echo $this->form->renderField( 'file_upload' ); ?>
 	<?php echo JHtml::_( 'form.token' ); ?>
-	<button type="submit"><?php echo JText::_( 'COM_PIXPARSE_WORKBOOK_BUTTON_PARSE' );?></button>
+	<button type="submit"><?php echo JText::_( 'COM_SHACKSPREADSHEETS_WORKBOOK_BUTTON_PARSE' );?></button>
 </form>
 <?php if( $this->data != '' ): ?>
-	<button onclick="Pixparse.insert();window.parent.jModalClose();"><?php echo JText::_( 'COM_PIXPARSE_WORKBOOK_BUTTON_INSERT' ); ?></button>
+	<button onclick="Shackspreadsheets.insert();window.parent.jModalClose();"><?php echo JText::_( 'COM_SHACKSPREADSHEETS_WORKBOOK_BUTTON_INSERT' ); ?></button>
 	<div id="data">
 		<?php echo $this->data; ?>
 	</div>
-	<button onclick="Pixparse.insert();window.parent.jModalClose();"><?php echo JText::_( 'COM_PIXPARSE_WORKBOOK_BUTTON_INSERT' ); ?></button>
+	<button onclick="Shackspreadsheets.insert();window.parent.jModalClose();"><?php echo JText::_( 'COM_SHACKSPREADSHEETS_WORKBOOK_BUTTON_INSERT' ); ?></button>
 <?php endif; ?>
 

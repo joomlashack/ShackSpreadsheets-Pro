@@ -1,8 +1,9 @@
 <?php
 /**
 * @author		Johan Sundell <labs@pixpro.net>
-* @link			https://www.pixpro.net/labs
-* @copyright	Copyright © You Rock AB 2003-2017 All Rights Reserved.
+* @author       Joomlashack <help@joomlashack.com> - https://www.joomlashack.com
+* @link			https://www.joomlashack.com/joomla-extensions/shack-spreadsheets/
+* @copyright	Copyright (C) 2018. All rights reserved.
 * @license		GNU General Public License version 2 or later; see LICENSE.txt
 */
 
@@ -10,7 +11,7 @@ defined('_JEXEC') or die;
 
 require_once dirname(__FILE__).'/../lib/PHPExcel/PHPExcel.php';
 
-class PixparseControllerWorkbook extends JControllerLegacy
+class ShackspreadsheetsControllerWorkbook extends JControllerLegacy
 {
 	public function parsefile()
 	{
@@ -34,13 +35,13 @@ class PixparseControllerWorkbook extends JControllerLegacy
 			}
 			$html .= '</table>'.PHP_EOL;
 			
-			JFactory::getApplication()->setUserState( 'pixparse.workbook.data' , $html );
+			JFactory::getApplication()->setUserState( 'shackspreadsheets.workbook.data' , $html );
 		}
 		catch( Exception $e)
 		{
 			
 		}
-		$url = 'index.php?option=com_pixparse&view=workbook&tmpl=component&name='.$editor;
+		$url = 'index.php?option=com_shackspreadsheets&view=workbook&tmpl=component&name='.$editor;
 		$this->setRedirect( $url );
 		$this->redirect();
 	}

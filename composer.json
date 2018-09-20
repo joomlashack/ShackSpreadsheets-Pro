@@ -1,0 +1,23 @@
+{
+    "name"             : "joomlashack/shackspreadsheets-pro",
+    "description"      : "Shack Editorial Calendar Pro",
+    "minimum-stability": "stable",
+    "license"          : "GPL-2+",
+    "type"             : "joomla.component",
+    "extra"            : {
+        "element"        : "com_shackspreadsheets",
+        "element-short"  : "shackspreadsheets",
+        "name"           : "Shack Spreadsheets Pro",
+        "client"         : "site",
+        "package-license": "pro"
+    },
+    "authors"          : [
+        {
+            "name" : "Joomlashack",
+            "email": "help@joomlashack.com"
+        }
+    ],
+    "require"          : {
+        "php"       : ">= 5.6"
+    }
+}

@@ -1,20 +1,21 @@
 <?php
 
 /**
- * @package    Com_Pixparse
+ * @package    Com_Shackspreadsheets
  * @author     Johan Sundell <labs@pixpro.net>
- * @copyright  You Rock AB 2003-2017 All Rights Reserved.
+ * @author     Joomlashack <help@joomlashack.com> - https://www.joomlashack.com
+ * @copyright  Copyright (C) 2018. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
  */
 // No direct access
 defined('_JEXEC') or die;
 
 /**
- * Class PixparseController
+ * Class ShackspreadsheetsController
  *
  * @since  1.6
  */
-class PixparseController extends JControllerLegacy
+class ShackspreadsheetsController extends JControllerLegacy
 {
 	/**
 	 * Method to display a view.
