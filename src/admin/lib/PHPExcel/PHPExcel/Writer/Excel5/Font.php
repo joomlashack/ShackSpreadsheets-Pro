@@ -49,7 +49,7 @@ class PHPExcel_Writer_Excel5_Font
     public function __construct(PHPExcel_Style_Font $font = null)
     {
         $this->colorIndex = 0x7FFF;
-        $this->font = $font;
+        $this->font       = $font;
     }
 
     /**
@@ -70,7 +70,7 @@ class PHPExcel_Writer_Excel5_Font
     public function writeFont()
     {
         $font_outline = 0;
-        $font_shadow = 0;
+        $font_shadow  = 0;
 
         $icv = $this->colorIndex; // Index to color palette
         if ($this->font->getSuperScript()) {
@@ -80,12 +80,12 @@ class PHPExcel_Writer_Excel5_Font
         } else {
             $sss = 0;
         }
-        $bFamily = 0; // Font family
+        $bFamily  = 0; // Font family
         $bCharSet = PHPExcel_Shared_Font::getCharsetFromFontName($this->font->getName()); // Character set
 
-        $record = 0x31;        // Record identifier
+        $record   = 0x31;        // Record identifier
         $reserved = 0x00;    // Reserved
-        $grbit = 0x00;        // Font attributes
+        $grbit    = 0x00;        // Font attributes
         if ($this->font->getItalic()) {
             $grbit |= 0x02;
         }
@@ -120,13 +120,14 @@ class PHPExcel_Writer_Excel5_Font
         $length = strlen($data);
         $header = pack("vv", $record, $length);
 
-        return($header . $data);
+        return ($header . $data);
     }
 
     /**
      * Map to BIFF5-BIFF8 codes for bold
      *
      * @param boolean $bold
+     *
      * @return int
      */
     private static function mapBold($bold)
@@ -139,21 +140,23 @@ class PHPExcel_Writer_Excel5_Font
 
     /**
      * Map of BIFF2-BIFF8 codes for underline styles
+     *
      * @static    array of int
      *
      */
     private static $mapUnderline = array(
-        PHPExcel_Style_Font::UNDERLINE_NONE              => 0x00,
-        PHPExcel_Style_Font::UNDERLINE_SINGLE            => 0x01,
-        PHPExcel_Style_Font::UNDERLINE_DOUBLE            => 0x02,
-        PHPExcel_Style_Font::UNDERLINE_SINGLEACCOUNTING  => 0x21,
-        PHPExcel_Style_Font::UNDERLINE_DOUBLEACCOUNTING  => 0x22,
+        PHPExcel_Style_Font::UNDERLINE_NONE             => 0x00,
+        PHPExcel_Style_Font::UNDERLINE_SINGLE           => 0x01,
+        PHPExcel_Style_Font::UNDERLINE_DOUBLE           => 0x02,
+        PHPExcel_Style_Font::UNDERLINE_SINGLEACCOUNTING => 0x21,
+        PHPExcel_Style_Font::UNDERLINE_DOUBLEACCOUNTING => 0x22,
     );
 
     /**
      * Map underline
      *
      * @param string
+     *
      * @return int
      */
     private static function mapUnderline($underline)

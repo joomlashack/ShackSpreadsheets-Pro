@@ -30,7 +30,7 @@ class PHPExcel_Shared_String
     /**    Constants                */
     /**    Regular Expressions        */
     //    Fraction
-    const STRING_REGEXP_FRACTION    = '(-?)(\d+)\s+(\d+\/\d+)';
+    const STRING_REGEXP_FRACTION = '(-?)(\d+)\s+(\d+\/\d+)';
 
 
     /**
@@ -89,8 +89,8 @@ class PHPExcel_Shared_String
     {
         for ($i = 0; $i <= 31; ++$i) {
             if ($i != 9 && $i != 10 && $i != 13) {
-                $find = '_x' . sprintf('%04s', strtoupper(dechex($i))) . '_';
-                $replace = chr($i);
+                $find                           = '_x' . sprintf('%04s', strtoupper(dechex($i))) . '_';
+                $replace                        = chr($i);
                 self::$controlCharacters[$find] = $replace;
             }
         }
@@ -309,7 +309,8 @@ class PHPExcel_Shared_String
         }
 
         // CUSTOM: IBM AIX iconv() does not work
-        if (defined('PHP_OS') && @stristr(PHP_OS, 'AIX') && defined('ICONV_IMPL') && (@strcasecmp(ICONV_IMPL, 'unknown') == 0) && defined('ICONV_VERSION') && (@strcasecmp(ICONV_VERSION, 'unknown') == 0)) {
+        if (defined('PHP_OS') && @stristr(PHP_OS, 'AIX') && defined('ICONV_IMPL') && (@strcasecmp(ICONV_IMPL,
+                    'unknown') == 0) && defined('ICONV_VERSION') && (@strcasecmp(ICONV_VERSION, 'unknown') == 0)) {
             self::$isIconvEnabled = false;
             return false;
         }
@@ -340,7 +341,8 @@ class PHPExcel_Shared_String
      * So you could end up with something like _x0008_ in a string (either in a cell value (<v>)
      * element or in the shared string <t> element.
      *
-     * @param     string    $value    Value to unescape
+     * @param     string $value Value to unescape
+     *
      * @return     string
      */
     public static function ControlCharacterOOXML2PHP($value = '')
@@ -359,7 +361,8 @@ class PHPExcel_Shared_String
      * So you could end up with something like _x0008_ in a string (either in a cell value (<v>)
      * element or in the shared string <t> element.
      *
-     * @param     string    $value    Value to escape
+     * @param     string $value Value to escape
+     *
      * @return     string
      */
     public static function ControlCharacterPHP2OOXML($value = '')
@@ -371,6 +374,7 @@ class PHPExcel_Shared_String
      * Try to sanitize UTF8, stripping invalid byte sequences. Not perfect. Does not surrogate characters.
      *
      * @param string $value
+     *
      * @return string
      */
     public static function SanitizeUTF8($value)
@@ -393,6 +397,7 @@ class PHPExcel_Shared_String
      * Check if a string contains UTF8 data
      *
      * @param string $value
+     *
      * @return boolean
      */
     public static function IsUTF8($value = '')
@@ -405,6 +410,7 @@ class PHPExcel_Shared_String
      * point as decimal separator in case locale is other than English.
      *
      * @param mixed $value
+     *
      * @return string
      */
     public static function FormatNumber($value)
@@ -412,7 +418,7 @@ class PHPExcel_Shared_String
         if (is_float($value)) {
             return str_replace(',', '.', $value);
         }
-        return (string) $value;
+        return (string)$value;
     }
 
     /**
@@ -424,6 +430,7 @@ class PHPExcel_Shared_String
      *
      * @param string  $value    UTF-8 encoded string
      * @param mixed[] $arrcRuns Details of rich text runs in $value
+     *
      * @return string
      */
     public static function UTF8toBIFF8UnicodeShort($value, $arrcRuns = array())
@@ -432,7 +439,7 @@ class PHPExcel_Shared_String
         $ln = self::CountCharacters($value, 'UTF-8');
         // option flags
         if (empty($arrcRuns)) {
-            $opt = (self::getIsIconvEnabled() || self::getIsMbstringEnabled()) ?
+            $opt  = (self::getIsIconvEnabled() || self::getIsMbstringEnabled()) ?
                 0x0001 : 0x0000;
             $data = pack('CC', $ln, $opt);
             // characters
@@ -458,6 +465,7 @@ class PHPExcel_Shared_String
      * see OpenOffice.org's Documentation of the Microsoft Excel File Format, sect. 2.5.3
      *
      * @param string $value UTF-8 encoded string
+     *
      * @return string
      */
     public static function UTF8toBIFF8UnicodeLong($value)
@@ -480,8 +488,9 @@ class PHPExcel_Shared_String
      * Convert string from one encoding to another. First try mbstring, then iconv, finally strlen
      *
      * @param string $value
-     * @param string $to Encoding to convert to, e.g. 'UTF-8'
+     * @param string $to   Encoding to convert to, e.g. 'UTF-8'
      * @param string $from Encoding to convert from, e.g. 'UTF-16LE'
+     *
      * @return string
      */
     public static function ConvertEncoding($value, $to, $from)
@@ -511,12 +520,13 @@ class PHPExcel_Shared_String
      * This function was taken from http://php.net/manual/en/function.utf8-decode.php
      * and $bom_be parameter added.
      *
-     * @param   string  $str  UTF-16 encoded data to decode.
+     * @param   string $str UTF-16 encoded data to decode.
+     *
      * @return  string  UTF-8 / ISO encoded data.
      * @access  public
      * @version 0.2 / 2010-05-13
      * @author  Rasmus Andersson {@link http://rasmusandersson.se/}
-     * @author vadik56
+     * @author  vadik56
      */
     public static function utf16_decode($str, $bom_be = true)
     {
@@ -528,17 +538,17 @@ class PHPExcel_Shared_String
         if ($c0 == 0xfe && $c1 == 0xff) {
             $str = substr($str, 2);
         } elseif ($c0 == 0xff && $c1 == 0xfe) {
-            $str = substr($str, 2);
+            $str    = substr($str, 2);
             $bom_be = false;
         }
-        $len = strlen($str);
+        $len    = strlen($str);
         $newstr = '';
-        for ($i=0; $i<$len; $i+=2) {
+        for ($i = 0; $i < $len; $i += 2) {
             if ($bom_be) {
-                $val = ord($str{$i})   << 4;
-                $val += ord($str{$i+1});
+                $val = ord($str{$i}) << 4;
+                $val += ord($str{$i + 1});
             } else {
-                $val = ord($str{$i+1}) << 4;
+                $val = ord($str{$i + 1}) << 4;
                 $val += ord($str{$i});
             }
             $newstr .= ($val == 0x228) ? "\n" : chr($val);
@@ -551,6 +561,7 @@ class PHPExcel_Shared_String
      *
      * @param string $value
      * @param string $enc Encoding
+     *
      * @return int Character count
      */
     public static function CountCharacters($value, $enc = 'UTF-8')
@@ -570,9 +581,10 @@ class PHPExcel_Shared_String
     /**
      * Get a substring of a UTF-8 encoded string. First try mbstring, then iconv, finally strlen
      *
-     * @param string $pValue UTF-8 encoded string
-     * @param int $pStart Start offset
-     * @param int $pLength Maximum number of characters in substring
+     * @param string $pValue  UTF-8 encoded string
+     * @param int    $pStart  Start offset
+     * @param int    $pLength Maximum number of characters in substring
+     *
      * @return string
      */
     public static function Substring($pValue = '', $pStart = 0, $pLength = 0)
@@ -593,6 +605,7 @@ class PHPExcel_Shared_String
      * Convert a UTF-8 encoded string to upper case
      *
      * @param string $pValue UTF-8 encoded string
+     *
      * @return string
      */
     public static function StrToUpper($pValue = '')
@@ -607,6 +620,7 @@ class PHPExcel_Shared_String
      * Convert a UTF-8 encoded string to lower case
      *
      * @param string $pValue UTF-8 encoded string
+     *
      * @return string
      */
     public static function StrToLower($pValue = '')
@@ -622,6 +636,7 @@ class PHPExcel_Shared_String
      *    (uppercase every first character in each word, lower case all other characters)
      *
      * @param string $pValue UTF-8 encoded string
+     *
      * @return string
      */
     public static function StrToTitle($pValue = '')
@@ -649,6 +664,7 @@ class PHPExcel_Shared_String
      *    and all lowercase characters become uppercase
      *
      * @param string $pValue UTF-8 encoded string
+     *
      * @return string
      */
     public static function StrCaseReverse($pValue = '')
@@ -672,14 +688,15 @@ class PHPExcel_Shared_String
      *    and convert it to a numeric if it is
      *
      * @param string &$operand string value to test
+     *
      * @return boolean
      */
     public static function convertToNumberIfFraction(&$operand)
     {
-        if (preg_match('/^'.self::STRING_REGEXP_FRACTION.'$/i', $operand, $match)) {
-            $sign = ($match[1] == '-') ? '-' : '+';
-            $fractionFormula = '='.$sign.$match[2].$sign.$match[3];
-            $operand = PHPExcel_Calculation::getInstance()->_calculateFormulaValue($fractionFormula);
+        if (preg_match('/^' . self::STRING_REGEXP_FRACTION . '$/i', $operand, $match)) {
+            $sign            = ($match[1] == '-') ? '-' : '+';
+            $fractionFormula = '=' . $sign . $match[2] . $sign . $match[3];
+            $operand         = PHPExcel_Calculation::getInstance()->_calculateFormulaValue($fractionFormula);
             return true;
         }
         return false;
@@ -694,7 +711,7 @@ class PHPExcel_Shared_String
     public static function getDecimalSeparator()
     {
         if (!isset(self::$decimalSeparator)) {
-            $localeconv = localeconv();
+            $localeconv             = localeconv();
             self::$decimalSeparator = ($localeconv['decimal_point'] != '')
                 ? $localeconv['decimal_point'] : $localeconv['mon_decimal_point'];
 
@@ -726,7 +743,7 @@ class PHPExcel_Shared_String
     public static function getThousandsSeparator()
     {
         if (!isset(self::$thousandsSeparator)) {
-            $localeconv = localeconv();
+            $localeconv               = localeconv();
             self::$thousandsSeparator = ($localeconv['thousands_sep'] != '')
                 ? $localeconv['thousands_sep'] : $localeconv['mon_thousands_sep'];
 
@@ -758,7 +775,7 @@ class PHPExcel_Shared_String
     public static function getCurrencyCode()
     {
         if (!isset(self::$currencyCode)) {
-            $localeconv = localeconv();
+            $localeconv         = localeconv();
             self::$currencyCode = ($localeconv['currency_symbol'] != '')
                 ? $localeconv['currency_symbol'] : $localeconv['int_curr_symbol'];
 
@@ -785,6 +802,7 @@ class PHPExcel_Shared_String
      * Convert SYLK encoded string to UTF-8
      *
      * @param string $pValue
+     *
      * @return string UTF-8 encoded string
      */
     public static function SYLKtoUTF8($pValue = '')
@@ -805,7 +823,8 @@ class PHPExcel_Shared_String
      * Retrieve any leading numeric part of a string, or return the full string if no leading numeric
      *    (handles basic integer or float, but not exponent or non decimal)
      *
-     * @param    string    $value
+     * @param    string $value
+     *
      * @return    mixed    string or only the leading numeric part of the string
      */
     public static function testStringAsNumeric($value)

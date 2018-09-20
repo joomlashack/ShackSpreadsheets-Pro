@@ -1,4 +1,5 @@
 <?php
+
 /**
  * PHPExcel_Worksheet_HeaderFooter
  *
@@ -193,6 +194,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set OddHeader
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setOddHeader($pValue)
@@ -215,6 +217,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set OddFooter
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setOddFooter($pValue)
@@ -237,6 +240,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set EvenHeader
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setEvenHeader($pValue)
@@ -259,6 +263,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set EvenFooter
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setEvenFooter($pValue)
@@ -281,6 +286,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set FirstHeader
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setFirstHeader($pValue)
@@ -303,6 +309,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set FirstFooter
      *
      * @param string $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setFirstFooter($pValue)
@@ -325,6 +332,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set DifferentOddEven
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setDifferentOddEven($pValue = false)
@@ -347,6 +355,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set DifferentFirst
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setDifferentFirst($pValue = false)
@@ -369,6 +378,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set ScaleWithDocument
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setScaleWithDocument($pValue = true)
@@ -391,6 +401,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set AlignWithMargins
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_HeaderFooter
      */
     public function setAlignWithMargins($pValue = true)
@@ -403,7 +414,8 @@ class PHPExcel_Worksheet_HeaderFooter
      * Add header/footer image
      *
      * @param PHPExcel_Worksheet_HeaderFooterDrawing $image
-     * @param string $location
+     * @param string                                 $location
+     *
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet_HeaderFooter
      */
@@ -417,6 +429,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Remove header/footer image
      *
      * @param string $location
+     *
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet_HeaderFooter
      */
@@ -432,6 +445,7 @@ class PHPExcel_Worksheet_HeaderFooter
      * Set header/footer images
      *
      * @param PHPExcel_Worksheet_HeaderFooterDrawing[] $images
+     *
      * @throws PHPExcel_Exception
      * @return PHPExcel_Worksheet_HeaderFooter
      */
@@ -455,22 +469,22 @@ class PHPExcel_Worksheet_HeaderFooter
         // Sort array
         $images = array();
         if (isset($this->headerFooterImages[self::IMAGE_HEADER_LEFT])) {
-            $images[self::IMAGE_HEADER_LEFT] =         $this->headerFooterImages[self::IMAGE_HEADER_LEFT];
+            $images[self::IMAGE_HEADER_LEFT] = $this->headerFooterImages[self::IMAGE_HEADER_LEFT];
         }
         if (isset($this->headerFooterImages[self::IMAGE_HEADER_CENTER])) {
-            $images[self::IMAGE_HEADER_CENTER] =     $this->headerFooterImages[self::IMAGE_HEADER_CENTER];
+            $images[self::IMAGE_HEADER_CENTER] = $this->headerFooterImages[self::IMAGE_HEADER_CENTER];
         }
         if (isset($this->headerFooterImages[self::IMAGE_HEADER_RIGHT])) {
-            $images[self::IMAGE_HEADER_RIGHT] =     $this->headerFooterImages[self::IMAGE_HEADER_RIGHT];
+            $images[self::IMAGE_HEADER_RIGHT] = $this->headerFooterImages[self::IMAGE_HEADER_RIGHT];
         }
         if (isset($this->headerFooterImages[self::IMAGE_FOOTER_LEFT])) {
-            $images[self::IMAGE_FOOTER_LEFT] =         $this->headerFooterImages[self::IMAGE_FOOTER_LEFT];
+            $images[self::IMAGE_FOOTER_LEFT] = $this->headerFooterImages[self::IMAGE_FOOTER_LEFT];
         }
         if (isset($this->headerFooterImages[self::IMAGE_FOOTER_CENTER])) {
-            $images[self::IMAGE_FOOTER_CENTER] =     $this->headerFooterImages[self::IMAGE_FOOTER_CENTER];
+            $images[self::IMAGE_FOOTER_CENTER] = $this->headerFooterImages[self::IMAGE_FOOTER_CENTER];
         }
         if (isset($this->headerFooterImages[self::IMAGE_FOOTER_RIGHT])) {
-            $images[self::IMAGE_FOOTER_RIGHT] =     $this->headerFooterImages[self::IMAGE_FOOTER_RIGHT];
+            $images[self::IMAGE_FOOTER_RIGHT] = $this->headerFooterImages[self::IMAGE_FOOTER_RIGHT];
         }
         $this->headerFooterImages = $images;
 

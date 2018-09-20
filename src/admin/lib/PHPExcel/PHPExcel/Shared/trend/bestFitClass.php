@@ -119,7 +119,8 @@ class PHPExcel_Best_Fit
     /**
      * Return the Y-Value for a specified value of X
      *
-     * @param     float        $xValue            X-Value
+     * @param     float $xValue X-Value
+     *
      * @return     float                        Y-Value
      */
     public function getValueOfYForX($xValue)
@@ -130,7 +131,8 @@ class PHPExcel_Best_Fit
     /**
      * Return the X-Value for a specified value of Y
      *
-     * @param     float        $yValue            Y-Value
+     * @param     float $yValue Y-Value
+     *
      * @return     float                        X-Value
      */
     public function getValueOfXForY($yValue)
@@ -151,7 +153,8 @@ class PHPExcel_Best_Fit
     /**
      * Return the Equation of the best-fit line
      *
-     * @param     int        $dp        Number of places of decimal precision to display
+     * @param     int $dp Number of places of decimal precision to display
+     *
      * @return     string
      */
     public function getEquation($dp = 0)
@@ -162,7 +165,8 @@ class PHPExcel_Best_Fit
     /**
      * Return the Slope of the line
      *
-     * @param     int        $dp        Number of places of decimal precision to display
+     * @param     int $dp Number of places of decimal precision to display
+     *
      * @return     string
      */
     public function getSlope($dp = 0)
@@ -176,7 +180,8 @@ class PHPExcel_Best_Fit
     /**
      * Return the standard error of the Slope
      *
-     * @param     int        $dp        Number of places of decimal precision to display
+     * @param     int $dp Number of places of decimal precision to display
+     *
      * @return     string
      */
     public function getSlopeSE($dp = 0)
@@ -190,7 +195,8 @@ class PHPExcel_Best_Fit
     /**
      * Return the Value of X where it intersects Y = 0
      *
-     * @param     int        $dp        Number of places of decimal precision to display
+     * @param     int $dp Number of places of decimal precision to display
+     *
      * @return     string
      */
     public function getIntersect($dp = 0)
@@ -204,7 +210,8 @@ class PHPExcel_Best_Fit
     /**
      * Return the standard error of the Intersect
      *
-     * @param     int        $dp        Number of places of decimal precision to display
+     * @param     int $dp Number of places of decimal precision to display
+     *
      * @return     string
      */
     public function getIntersectSE($dp = 0)
@@ -218,7 +225,8 @@ class PHPExcel_Best_Fit
     /**
      * Return the goodness of fit for this regression
      *
-     * @param     int        $dp        Number of places of decimal precision to return
+     * @param     int $dp Number of places of decimal precision to return
+     *
      * @return     float
      */
     public function getGoodnessOfFit($dp = 0)
@@ -240,7 +248,8 @@ class PHPExcel_Best_Fit
     /**
      * Return the standard deviation of the residuals for this regression
      *
-     * @param     int        $dp        Number of places of decimal precision to return
+     * @param     int $dp Number of places of decimal precision to return
+     *
      * @return     float
      */
     public function getStdevOfResiduals($dp = 0)
@@ -339,10 +348,11 @@ class PHPExcel_Best_Fit
         }
 
         $this->SSRegression = $this->goodnessOfFit * $SStot;
-        $this->covariance = $SScov / $this->valueCount;
-        $this->correlation = ($this->valueCount * $sumXY - $sumX * $sumY) / sqrt(($this->valueCount * $sumX2 - pow($sumX, 2)) * ($this->valueCount * $sumY2 - pow($sumY, 2)));
-        $this->slopeSE = $this->stdevOfResiduals / sqrt($SSsex);
-        $this->intersectSE = $this->stdevOfResiduals * sqrt(1 / ($this->valueCount - ($sumX * $sumX) / $sumX2));
+        $this->covariance   = $SScov / $this->valueCount;
+        $this->correlation  = ($this->valueCount * $sumXY - $sumX * $sumY) / sqrt(($this->valueCount * $sumX2 - pow($sumX,
+                        2)) * ($this->valueCount * $sumY2 - pow($sumY, 2)));
+        $this->slopeSE      = $this->stdevOfResiduals / sqrt($SSsex);
+        $this->intersectSE  = $this->stdevOfResiduals * sqrt(1 / ($this->valueCount - ($sumX * $sumX) / $sumX2));
         if ($this->SSResiduals != 0.0) {
             if ($this->DFResiduals == 0.0) {
                 $this->f = 0.0;
@@ -372,10 +382,10 @@ class PHPExcel_Best_Fit
             $yy_sum += $yValues[$i] * $yValues[$i];
 
             if ($const) {
-                $mBase += ($xValues[$i] - $meanX) * ($yValues[$i] - $meanY);
+                $mBase    += ($xValues[$i] - $meanX) * ($yValues[$i] - $meanY);
                 $mDivisor += ($xValues[$i] - $meanX) * ($xValues[$i] - $meanX);
             } else {
-                $mBase += $xValues[$i] * $yValues[$i];
+                $mBase    += $xValues[$i] * $yValues[$i];
                 $mDivisor += $xValues[$i] * $xValues[$i];
             }
         }
@@ -398,9 +408,9 @@ class PHPExcel_Best_Fit
     /**
      * Define the regression
      *
-     * @param    float[]        $yValues    The set of Y-values for this regression
-     * @param    float[]        $xValues    The set of X-values for this regression
-     * @param    boolean        $const
+     * @param    float[] $yValues The set of Y-values for this regression
+     * @param    float[] $xValues The set of X-values for this regression
+     * @param    boolean $const
      */
     public function __construct($yValues, $xValues = array(), $const = true)
     {
@@ -411,7 +421,7 @@ class PHPExcel_Best_Fit
         //    Define X Values if necessary
         if ($nX == 0) {
             $xValues = range(1, $nY);
-            $nX = $nY;
+            $nX      = $nY;
         } elseif ($nY != $nX) {
             //    Ensure both arrays of points are the same size
             $this->error = true;
@@ -419,7 +429,7 @@ class PHPExcel_Best_Fit
         }
 
         $this->valueCount = $nY;
-        $this->xValues = $xValues;
-        $this->yValues = $yValues;
+        $this->xValues    = $xValues;
+        $this->yValues    = $yValues;
     }
 }

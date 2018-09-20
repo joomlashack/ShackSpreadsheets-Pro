@@ -33,6 +33,7 @@ interface PHPExcel_Reader_IReadFilter
      * @param    $column           Column address (as a string value like "A", or "IV")
      * @param    $row              Row number
      * @param    $worksheetName    Optional worksheet name
+     *
      * @return   boolean
      */
     public function readCell($column, $row, $worksheetName = '');

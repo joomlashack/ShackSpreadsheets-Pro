@@ -40,119 +40,119 @@ class PHPExcel_Worksheet_Protection
      *
      * @var boolean
      */
-    private $sheet                    = false;
+    private $sheet = false;
 
     /**
      * Objects
      *
      * @var boolean
      */
-    private $objects                = false;
+    private $objects = false;
 
     /**
      * Scenarios
      *
      * @var boolean
      */
-    private $scenarios                = false;
+    private $scenarios = false;
 
     /**
      * Format cells
      *
      * @var boolean
      */
-    private $formatCells            = false;
+    private $formatCells = false;
 
     /**
      * Format columns
      *
      * @var boolean
      */
-    private $formatColumns            = false;
+    private $formatColumns = false;
 
     /**
      * Format rows
      *
      * @var boolean
      */
-    private $formatRows            = false;
+    private $formatRows = false;
 
     /**
      * Insert columns
      *
      * @var boolean
      */
-    private $insertColumns            = false;
+    private $insertColumns = false;
 
     /**
      * Insert rows
      *
      * @var boolean
      */
-    private $insertRows            = false;
+    private $insertRows = false;
 
     /**
      * Insert hyperlinks
      *
      * @var boolean
      */
-    private $insertHyperlinks        = false;
+    private $insertHyperlinks = false;
 
     /**
      * Delete columns
      *
      * @var boolean
      */
-    private $deleteColumns            = false;
+    private $deleteColumns = false;
 
     /**
      * Delete rows
      *
      * @var boolean
      */
-    private $deleteRows            = false;
+    private $deleteRows = false;
 
     /**
      * Select locked cells
      *
      * @var boolean
      */
-    private $selectLockedCells        = false;
+    private $selectLockedCells = false;
 
     /**
      * Sort
      *
      * @var boolean
      */
-    private $sort                    = false;
+    private $sort = false;
 
     /**
      * AutoFilter
      *
      * @var boolean
      */
-    private $autoFilter            = false;
+    private $autoFilter = false;
 
     /**
      * Pivot tables
      *
      * @var boolean
      */
-    private $pivotTables            = false;
+    private $pivotTables = false;
 
     /**
      * Select unlocked cells
      *
      * @var boolean
      */
-    private $selectUnlockedCells    = false;
+    private $selectUnlockedCells = false;
 
     /**
      * Password
      *
      * @var string
      */
-    private $password                = '';
+    private $password = '';
 
     /**
      * Create a new PHPExcel_Worksheet_Protection
@@ -200,6 +200,7 @@ class PHPExcel_Worksheet_Protection
      * Set Sheet
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setSheet($pValue = false)
@@ -222,6 +223,7 @@ class PHPExcel_Worksheet_Protection
      * Set Objects
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setObjects($pValue = false)
@@ -244,6 +246,7 @@ class PHPExcel_Worksheet_Protection
      * Set Scenarios
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setScenarios($pValue = false)
@@ -266,6 +269,7 @@ class PHPExcel_Worksheet_Protection
      * Set FormatCells
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setFormatCells($pValue = false)
@@ -288,6 +292,7 @@ class PHPExcel_Worksheet_Protection
      * Set FormatColumns
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setFormatColumns($pValue = false)
@@ -310,6 +315,7 @@ class PHPExcel_Worksheet_Protection
      * Set FormatRows
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setFormatRows($pValue = false)
@@ -332,6 +338,7 @@ class PHPExcel_Worksheet_Protection
      * Set InsertColumns
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setInsertColumns($pValue = false)
@@ -354,6 +361,7 @@ class PHPExcel_Worksheet_Protection
      * Set InsertRows
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setInsertRows($pValue = false)
@@ -376,6 +384,7 @@ class PHPExcel_Worksheet_Protection
      * Set InsertHyperlinks
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setInsertHyperlinks($pValue = false)
@@ -398,6 +407,7 @@ class PHPExcel_Worksheet_Protection
      * Set DeleteColumns
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setDeleteColumns($pValue = false)
@@ -420,6 +430,7 @@ class PHPExcel_Worksheet_Protection
      * Set DeleteRows
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setDeleteRows($pValue = false)
@@ -442,6 +453,7 @@ class PHPExcel_Worksheet_Protection
      * Set SelectLockedCells
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setSelectLockedCells($pValue = false)
@@ -464,6 +476,7 @@ class PHPExcel_Worksheet_Protection
      * Set Sort
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setSort($pValue = false)
@@ -486,6 +499,7 @@ class PHPExcel_Worksheet_Protection
      * Set AutoFilter
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setAutoFilter($pValue = false)
@@ -508,6 +522,7 @@ class PHPExcel_Worksheet_Protection
      * Set PivotTables
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setPivotTables($pValue = false)
@@ -530,6 +545,7 @@ class PHPExcel_Worksheet_Protection
      * Set SelectUnlockedCells
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setSelectUnlockedCells($pValue = false)
@@ -551,8 +567,9 @@ class PHPExcel_Worksheet_Protection
     /**
      * Set Password
      *
-     * @param string     $pValue
-     * @param boolean     $pAlreadyHashed If the password has already been hashed, set this to true
+     * @param string  $pValue
+     * @param boolean $pAlreadyHashed If the password has already been hashed, set this to true
+     *
      * @return PHPExcel_Worksheet_Protection
      */
     public function setPassword($pValue = '', $pAlreadyHashed = false)

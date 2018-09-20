@@ -16,6 +16,7 @@ class PHPExcel_Reader_Excel5_ErrorCode
      * Map error code, e.g. '#N/A'
      *
      * @param int $code
+     *
      * @return string
      */
     public static function lookup($code)

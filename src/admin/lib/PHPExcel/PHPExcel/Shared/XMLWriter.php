@@ -36,21 +36,21 @@ if (!defined('DEBUGMODE_ENABLED')) {
 class PHPExcel_Shared_XMLWriter extends XMLWriter
 {
     /** Temporary storage method */
-    const STORAGE_MEMORY    = 1;
-    const STORAGE_DISK      = 2;
+    const STORAGE_MEMORY = 1;
+    const STORAGE_DISK   = 2;
 
     /**
      * Temporary filename
      *
      * @var string
      */
-    private $tempFileName  = '';
+    private $tempFileName = '';
 
     /**
      * Create a new PHPExcel_Shared_XMLWriter instance
      *
-     * @param int      $pTemporaryStorage        Temporary storage location
-     * @param string   $pTemporaryStorageFolder  Temporary storage folder
+     * @param int    $pTemporaryStorage       Temporary storage location
+     * @param string $pTemporaryStorageFolder Temporary storage folder
      */
     public function __construct($pTemporaryStorage = self::STORAGE_MEMORY, $pTemporaryStorageFolder = null)
     {
@@ -107,6 +107,7 @@ class PHPExcel_Shared_XMLWriter extends XMLWriter
      * Fallback method for writeRaw, introduced in PHP 5.2
      *
      * @param string $text
+     *
      * @return string
      */
     public function writeRawData($text)

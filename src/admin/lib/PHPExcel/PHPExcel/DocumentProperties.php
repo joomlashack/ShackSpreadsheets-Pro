@@ -19,11 +19,11 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category    PHPExcel
- * @package    PHPExcel
+ * @category     PHPExcel
+ * @package      PHPExcel
  * @copyright    Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
- * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
- * @version    ##VERSION##, ##DATE##
+ * @license      http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
+ * @version      ##VERSION##, ##DATE##
  */
 class PHPExcel_DocumentProperties
 {
@@ -127,8 +127,8 @@ class PHPExcel_DocumentProperties
     {
         // Initialise values
         $this->lastModifiedBy = $this->creator;
-        $this->created  = time();
-        $this->modified = time();
+        $this->created        = time();
+        $this->modified       = time();
     }
 
     /**
@@ -145,6 +145,7 @@ class PHPExcel_DocumentProperties
      * Set Creator
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCreator($pValue = '')
@@ -167,6 +168,7 @@ class PHPExcel_DocumentProperties
      * Set Last Modified By
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setLastModifiedBy($pValue = '')
@@ -189,6 +191,7 @@ class PHPExcel_DocumentProperties
      * Set Created
      *
      * @param datetime $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCreated($pValue = null)
@@ -221,6 +224,7 @@ class PHPExcel_DocumentProperties
      * Set Modified
      *
      * @param datetime $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setModified($pValue = null)
@@ -253,6 +257,7 @@ class PHPExcel_DocumentProperties
      * Set Title
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setTitle($pValue = '')
@@ -275,6 +280,7 @@ class PHPExcel_DocumentProperties
      * Set Description
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setDescription($pValue = '')
@@ -297,6 +303,7 @@ class PHPExcel_DocumentProperties
      * Set Subject
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setSubject($pValue = '')
@@ -319,6 +326,7 @@ class PHPExcel_DocumentProperties
      * Set Keywords
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setKeywords($pValue = '')
@@ -341,6 +349,7 @@ class PHPExcel_DocumentProperties
      * Set Category
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCategory($pValue = '')
@@ -363,6 +372,7 @@ class PHPExcel_DocumentProperties
      * Set Company
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCompany($pValue = '')
@@ -385,6 +395,7 @@ class PHPExcel_DocumentProperties
      * Set Manager
      *
      * @param string $pValue
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setManager($pValue = '')
@@ -407,6 +418,7 @@ class PHPExcel_DocumentProperties
      * Check if a Custom Property is defined
      *
      * @param string $propertyName
+     *
      * @return boolean
      */
     public function isCustomPropertySet($propertyName)
@@ -418,6 +430,7 @@ class PHPExcel_DocumentProperties
      * Get a Custom Property Value
      *
      * @param string $propertyName
+     *
      * @return string
      */
     public function getCustomPropertyValue($propertyName)
@@ -432,6 +445,7 @@ class PHPExcel_DocumentProperties
      * Get a Custom Property Type
      *
      * @param string $propertyName
+     *
      * @return string
      */
     public function getCustomPropertyType($propertyName)
@@ -446,22 +460,25 @@ class PHPExcel_DocumentProperties
      * Set a Custom Property
      *
      * @param string $propertyName
-     * @param mixed $propertyValue
+     * @param mixed  $propertyValue
      * @param string $propertyType
      *      'i'    : Integer
-     *   'f' : Floating Point
-     *   's' : String
-     *   'd' : Date/Time
-     *   'b' : Boolean
+     *      'f' : Floating Point
+     *      's' : String
+     *      'd' : Date/Time
+     *      'b' : Boolean
+     *
      * @return PHPExcel_DocumentProperties
      */
     public function setCustomProperty($propertyName, $propertyValue = '', $propertyType = null)
     {
-        if (($propertyType === null) || (!in_array($propertyType, array(self::PROPERTY_TYPE_INTEGER,
-                                                                        self::PROPERTY_TYPE_FLOAT,
-                                                                        self::PROPERTY_TYPE_STRING,
-                                                                        self::PROPERTY_TYPE_DATE,
-                                                                        self::PROPERTY_TYPE_BOOLEAN)))) {
+        if (($propertyType === null) || (!in_array($propertyType, array(
+                self::PROPERTY_TYPE_INTEGER,
+                self::PROPERTY_TYPE_FLOAT,
+                self::PROPERTY_TYPE_STRING,
+                self::PROPERTY_TYPE_DATE,
+                self::PROPERTY_TYPE_BOOLEAN
+            )))) {
             if ($propertyValue === null) {
                 $propertyType = self::PROPERTY_TYPE_STRING;
             } elseif (is_float($propertyValue)) {
@@ -477,7 +494,7 @@ class PHPExcel_DocumentProperties
 
         $this->customProperties[$propertyName] = array(
             'value' => $propertyValue,
-            'type' => $propertyType
+            'type'  => $propertyType
         );
         return $this;
     }
@@ -511,19 +528,19 @@ class PHPExcel_DocumentProperties
             case 'i4':        //    4-Byte Signed Integer
             case 'i8':        //    8-Byte Signed Integer
             case 'int':       //    Integer
-                return (int) $propertyValue;
+                return (int)$propertyValue;
                 break;
             case 'ui1':       //    1-Byte Unsigned Integer
             case 'ui2':       //    2-Byte Unsigned Integer
             case 'ui4':       //    4-Byte Unsigned Integer
             case 'ui8':       //    8-Byte Unsigned Integer
             case 'uint':      //    Unsigned Integer
-                return abs((int) $propertyValue);
+                return abs((int)$propertyValue);
                 break;
             case 'r4':        //    4-Byte Real Number
             case 'r8':        //    8-Byte Real Number
             case 'decimal':   //    Decimal
-                return (float) $propertyValue;
+                return (float)$propertyValue;
                 break;
             case 'lpstr':     //    LPSTR
             case 'lpwstr':    //    LPWSTR

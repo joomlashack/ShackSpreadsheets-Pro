@@ -25,7 +25,8 @@
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  * @version    ##VERSION##, ##DATE##
  */
-class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage_CacheBase implements PHPExcel_CachedObjectStorage_ICache
+class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage_CacheBase implements
+    PHPExcel_CachedObjectStorage_ICache
 {
     /**
      * Name of the file for this cache
@@ -66,7 +67,7 @@ class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage
                 'ptr' => ftell($this->fileHandle),
                 'sz'  => fwrite($this->fileHandle, serialize($this->currentObject))
             );
-            $this->currentCellIsDirty = false;
+            $this->currentCellIsDirty                = false;
         }
         $this->currentObjectID = $this->currentObject = null;
     }
@@ -74,8 +75,9 @@ class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage
     /**
      * Add or Update a cell in cache identified by coordinate address
      *
-     * @param    string            $pCoord        Coordinate address of the cell to update
-     * @param    PHPExcel_Cell    $cell        Cell to update
+     * @param    string        $pCoord Coordinate address of the cell to update
+     * @param    PHPExcel_Cell $cell   Cell to update
+     *
      * @return    PHPExcel_Cell
      * @throws    PHPExcel_Exception
      */
@@ -85,8 +87,8 @@ class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage
             $this->storeData();
         }
 
-        $this->currentObjectID = $pCoord;
-        $this->currentObject = $cell;
+        $this->currentObjectID    = $pCoord;
+        $this->currentObject      = $cell;
         $this->currentCellIsDirty = true;
 
         return $cell;
@@ -95,7 +97,8 @@ class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage
     /**
      * Get cell at a specific coordinate
      *
-     * @param     string             $pCoord        Coordinate of the cell
+     * @param     string $pCoord Coordinate of the cell
+     *
      * @throws     PHPExcel_Exception
      * @return     PHPExcel_Cell     Cell that was found, or null if not found
      */
@@ -140,14 +143,14 @@ class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage
     /**
      * Clone the cell collection
      *
-     * @param    PHPExcel_Worksheet    $parent        The new worksheet
+     * @param    PHPExcel_Worksheet $parent The new worksheet
      */
     public function copyCellCollection(PHPExcel_Worksheet $parent)
     {
         parent::copyCellCollection($parent);
         //    Get a new id for the new file name
-        $baseUnique = $this->getUniqueID();
-        $newFileName = $this->cacheDirectory.'/PHPExcel.'.$baseUnique.'.cache';
+        $baseUnique  = $this->getUniqueID();
+        $newFileName = $this->cacheDirectory . '/PHPExcel.' . $baseUnique . '.cache';
         //    Copy the existing cell cache file
         copy($this->fileName, $newFileName);
         $this->fileName = $newFileName;
@@ -177,19 +180,19 @@ class PHPExcel_CachedObjectStorage_DiscISAM extends PHPExcel_CachedObjectStorage
     /**
      * Initialise this new cell collection
      *
-     * @param    PHPExcel_Worksheet    $parent        The worksheet for this cell collection
+     * @param    PHPExcel_Worksheet $parent The worksheet for this cell collection
      * @param    array of mixed        $arguments    Additional initialisation arguments
      */
     public function __construct(PHPExcel_Worksheet $parent, $arguments)
     {
-        $this->cacheDirectory    = ((isset($arguments['dir'])) && ($arguments['dir'] !== null))
-                                    ? $arguments['dir']
-                                    : PHPExcel_Shared_File::sys_get_temp_dir();
+        $this->cacheDirectory = ((isset($arguments['dir'])) && ($arguments['dir'] !== null))
+            ? $arguments['dir']
+            : PHPExcel_Shared_File::sys_get_temp_dir();
 
         parent::__construct($parent);
         if (is_null($this->fileHandle)) {
-            $baseUnique = $this->getUniqueID();
-            $this->fileName = $this->cacheDirectory.'/PHPExcel.'.$baseUnique.'.cache';
+            $baseUnique       = $this->getUniqueID();
+            $this->fileName   = $this->cacheDirectory . '/PHPExcel.' . $baseUnique . '.cache';
             $this->fileHandle = fopen($this->fileName, 'a+');
         }
     }

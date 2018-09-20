@@ -29,6 +29,7 @@ class PHPExcel_Reader_Excel5_Style_FillPattern
      * OpenOffice documentation: 2.5.12
      *
      * @param int $index
+     *
      * @return string
      */
     public static function lookup($index)

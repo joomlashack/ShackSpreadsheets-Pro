@@ -28,9 +28,9 @@ if (!defined('PHPEXCEL_ROOT')) {
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Calculation
- * @copyright    Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  * @version        ##VERSION##, ##DATE##
  */
@@ -40,18 +40,18 @@ class PHPExcel_Calculation_TextData
 
     private static function unicodeToOrd($c)
     {
-        if (ord($c{0}) >=0 && ord($c{0}) <= 127) {
+        if (ord($c{0}) >= 0 && ord($c{0}) <= 127) {
             return ord($c{0});
         } elseif (ord($c{0}) >= 192 && ord($c{0}) <= 223) {
-            return (ord($c{0})-192)*64 + (ord($c{1})-128);
+            return (ord($c{0}) - 192) * 64 + (ord($c{1}) - 128);
         } elseif (ord($c{0}) >= 224 && ord($c{0}) <= 239) {
-            return (ord($c{0})-224)*4096 + (ord($c{1})-128)*64 + (ord($c{2})-128);
+            return (ord($c{0}) - 224) * 4096 + (ord($c{1}) - 128) * 64 + (ord($c{2}) - 128);
         } elseif (ord($c{0}) >= 240 && ord($c{0}) <= 247) {
-            return (ord($c{0})-240)*262144 + (ord($c{1})-128)*4096 + (ord($c{2})-128)*64 + (ord($c{3})-128);
+            return (ord($c{0}) - 240) * 262144 + (ord($c{1}) - 128) * 4096 + (ord($c{2}) - 128) * 64 + (ord($c{3}) - 128);
         } elseif (ord($c{0}) >= 248 && ord($c{0}) <= 251) {
-            return (ord($c{0})-248)*16777216 + (ord($c{1})-128)*262144 + (ord($c{2})-128)*4096 + (ord($c{3})-128)*64 + (ord($c{4})-128);
+            return (ord($c{0}) - 248) * 16777216 + (ord($c{1}) - 128) * 262144 + (ord($c{2}) - 128) * 4096 + (ord($c{3}) - 128) * 64 + (ord($c{4}) - 128);
         } elseif (ord($c{0}) >= 252 && ord($c{0}) <= 253) {
-            return (ord($c{0})-252)*1073741824 + (ord($c{1})-128)*16777216 + (ord($c{2})-128)*262144 + (ord($c{3})-128)*4096 + (ord($c{4})-128)*64 + (ord($c{5})-128);
+            return (ord($c{0}) - 252) * 1073741824 + (ord($c{1}) - 128) * 16777216 + (ord($c{2}) - 128) * 262144 + (ord($c{3}) - 128) * 4096 + (ord($c{4}) - 128) * 64 + (ord($c{5}) - 128);
         } elseif (ord($c{0}) >= 254 && ord($c{0}) <= 255) {
             // error
             return PHPExcel_Calculation_Functions::VALUE();
@@ -62,7 +62,8 @@ class PHPExcel_Calculation_TextData
     /**
      * CHARACTER
      *
-     * @param    string    $character    Value
+     * @param    string $character Value
+     *
      * @return    int
      */
     public static function CHARACTER($character)
@@ -74,7 +75,7 @@ class PHPExcel_Calculation_TextData
         }
 
         if (function_exists('mb_convert_encoding')) {
-            return mb_convert_encoding('&#'.intval($character).';', 'UTF-8', 'HTML-ENTITIES');
+            return mb_convert_encoding('&#' . intval($character) . ';', 'UTF-8', 'HTML-ENTITIES');
         } else {
             return chr(intval($character));
         }
@@ -84,12 +85,13 @@ class PHPExcel_Calculation_TextData
     /**
      * TRIMNONPRINTABLE
      *
-     * @param    mixed    $stringValue    Value to check
+     * @param    mixed $stringValue Value to check
+     *
      * @return    string
      */
     public static function TRIMNONPRINTABLE($stringValue = '')
     {
-        $stringValue    = PHPExcel_Calculation_Functions::flattenSingleValue($stringValue);
+        $stringValue = PHPExcel_Calculation_Functions::flattenSingleValue($stringValue);
 
         if (is_bool($stringValue)) {
             return ($stringValue) ? PHPExcel_Calculation::getTRUE() : PHPExcel_Calculation::getFALSE();
@@ -109,7 +111,8 @@ class PHPExcel_Calculation_TextData
     /**
      * TRIMSPACES
      *
-     * @param    mixed    $stringValue    Value to check
+     * @param    mixed $stringValue Value to check
+     *
      * @return    string
      */
     public static function TRIMSPACES($stringValue = '')
@@ -129,7 +132,8 @@ class PHPExcel_Calculation_TextData
     /**
      * ASCIICODE
      *
-     * @param    string    $characters        Value
+     * @param    string $characters Value
+     *
      * @return    int
      */
     public static function ASCIICODE($characters)
@@ -137,10 +141,10 @@ class PHPExcel_Calculation_TextData
         if (($characters === null) || ($characters === '')) {
             return PHPExcel_Calculation_Functions::VALUE();
         }
-        $characters    = PHPExcel_Calculation_Functions::flattenSingleValue($characters);
+        $characters = PHPExcel_Calculation_Functions::flattenSingleValue($characters);
         if (is_bool($characters)) {
             if (PHPExcel_Calculation_Functions::getCompatibilityMode() == PHPExcel_Calculation_Functions::COMPATIBILITY_OPENOFFICE) {
-                $characters = (int) $characters;
+                $characters = (int)$characters;
             } else {
                 $characters = ($characters) ? PHPExcel_Calculation::getTRUE() : PHPExcel_Calculation::getFALSE();
             }
@@ -175,7 +179,7 @@ class PHPExcel_Calculation_TextData
         foreach ($aArgs as $arg) {
             if (is_bool($arg)) {
                 if (PHPExcel_Calculation_Functions::getCompatibilityMode() == PHPExcel_Calculation_Functions::COMPATIBILITY_OPENOFFICE) {
-                    $arg = (int) $arg;
+                    $arg = (int)$arg;
                 } else {
                     $arg = ($arg) ? PHPExcel_Calculation::getTRUE() : PHPExcel_Calculation::getFALSE();
                 }
@@ -193,16 +197,17 @@ class PHPExcel_Calculation_TextData
      * This function converts a number to text using currency format, with the decimals rounded to the specified place.
      * The format used is $#,##0.00_);($#,##0.00)..
      *
-     * @param    float    $value            The value to format
-     * @param    int        $decimals        The number of digits to display to the right of the decimal point.
+     * @param    float $value             The value to format
+     * @param    int   $decimals          The number of digits to display to the right of the decimal point.
      *                                    If decimals is negative, number is rounded to the left of the decimal point.
      *                                    If you omit decimals, it is assumed to be 2
+     *
      * @return    string
      */
     public static function DOLLAR($value = 0, $decimals = 2)
     {
-        $value        = PHPExcel_Calculation_Functions::flattenSingleValue($value);
-        $decimals    = is_null($decimals) ? 0 : PHPExcel_Calculation_Functions::flattenSingleValue($decimals);
+        $value    = PHPExcel_Calculation_Functions::flattenSingleValue($value);
+        $decimals = is_null($decimals) ? 0 : PHPExcel_Calculation_Functions::flattenSingleValue($decimals);
 
         // Validate parameters
         if (!is_numeric($value) || !is_numeric($decimals)) {
@@ -216,7 +221,7 @@ class PHPExcel_Calculation_TextData
         } else {
             $round = pow(10, abs($decimals));
             if ($value < 0) {
-                $round = 0-$round;
+                $round = 0 - $round;
             }
             $value = PHPExcel_Calculation_MathTrig::MROUND($value, $round);
         }
@@ -229,9 +234,10 @@ class PHPExcel_Calculation_TextData
     /**
      * SEARCHSENSITIVE
      *
-     * @param    string    $needle        The string to look for
-     * @param    string    $haystack    The string in which to look
-     * @param    int        $offset        Offset within $haystack
+     * @param    string $needle   The string to look for
+     * @param    string $haystack The string in which to look
+     * @param    int    $offset   Offset within $haystack
+     *
      * @return    string
      */
     public static function SEARCHSENSITIVE($needle, $haystack, $offset = 1)
@@ -266,9 +272,10 @@ class PHPExcel_Calculation_TextData
     /**
      * SEARCHINSENSITIVE
      *
-     * @param    string    $needle        The string to look for
-     * @param    string    $haystack    The string in which to look
-     * @param    int        $offset        Offset within $haystack
+     * @param    string $needle   The string to look for
+     * @param    string $haystack The string in which to look
+     * @param    int    $offset   Offset within $haystack
+     *
      * @return    string
      */
     public static function SEARCHINSENSITIVE($needle, $haystack, $offset = 1)
@@ -303,9 +310,10 @@ class PHPExcel_Calculation_TextData
     /**
      * FIXEDFORMAT
      *
-     * @param    mixed        $value    Value to check
-     * @param    integer        $decimals
-     * @param    boolean        $no_commas
+     * @param    mixed   $value Value to check
+     * @param    integer $decimals
+     * @param    boolean $no_commas
+     *
      * @return    boolean
      */
     public static function FIXEDFORMAT($value, $decimals = 2, $no_commas = false)
@@ -328,15 +336,16 @@ class PHPExcel_Calculation_TextData
             $valueResult = number_format($valueResult, $decimals);
         }
 
-        return (string) $valueResult;
+        return (string)$valueResult;
     }
 
 
     /**
      * LEFT
      *
-     * @param    string    $value    Value
-     * @param    int        $chars    Number of characters
+     * @param    string $value Value
+     * @param    int    $chars Number of characters
+     *
      * @return    string
      */
     public static function LEFT($value = '', $chars = 1)
@@ -363,9 +372,10 @@ class PHPExcel_Calculation_TextData
     /**
      * MID
      *
-     * @param    string    $value    Value
-     * @param    int        $start    Start character
-     * @param    int        $chars    Number of characters
+     * @param    string $value Value
+     * @param    int    $start Start character
+     * @param    int    $chars Number of characters
+     *
      * @return    string
      */
     public static function MID($value = '', $start = 1, $chars = null)
@@ -393,8 +403,9 @@ class PHPExcel_Calculation_TextData
     /**
      * RIGHT
      *
-     * @param    string    $value    Value
-     * @param    int        $chars    Number of characters
+     * @param    string $value Value
+     * @param    int    $chars Number of characters
+     *
      * @return    string
      */
     public static function RIGHT($value = '', $chars = 1)
@@ -421,7 +432,8 @@ class PHPExcel_Calculation_TextData
     /**
      * STRINGLENGTH
      *
-     * @param    string    $value    Value
+     * @param    string $value Value
+     *
      * @return    string
      */
     public static function STRINGLENGTH($value = '')
@@ -445,7 +457,8 @@ class PHPExcel_Calculation_TextData
      *
      * Converts a string value to upper case.
      *
-     * @param    string        $mixedCaseString
+     * @param    string $mixedCaseString
+     *
      * @return    string
      */
     public static function LOWERCASE($mixedCaseString)
@@ -465,7 +478,8 @@ class PHPExcel_Calculation_TextData
      *
      * Converts a string value to upper case.
      *
-     * @param    string        $mixedCaseString
+     * @param    string $mixedCaseString
+     *
      * @return    string
      */
     public static function UPPERCASE($mixedCaseString)
@@ -485,7 +499,8 @@ class PHPExcel_Calculation_TextData
      *
      * Converts a string value to upper case.
      *
-     * @param    string        $mixedCaseString
+     * @param    string $mixedCaseString
+     *
      * @return    string
      */
     public static function PROPERCASE($mixedCaseString)
@@ -503,10 +518,11 @@ class PHPExcel_Calculation_TextData
     /**
      * REPLACE
      *
-     * @param    string    $oldText    String to modify
-     * @param    int        $start        Start character
-     * @param    int        $chars        Number of characters
-     * @param    string    $newText    String to replace in defined position
+     * @param    string $oldText String to modify
+     * @param    int    $start   Start character
+     * @param    int    $chars   Number of characters
+     * @param    string $newText String to replace in defined position
+     *
      * @return    string
      */
     public static function REPLACE($oldText = '', $start = 1, $chars = null, $newText)
@@ -516,20 +532,21 @@ class PHPExcel_Calculation_TextData
         $chars   = PHPExcel_Calculation_Functions::flattenSingleValue($chars);
         $newText = PHPExcel_Calculation_Functions::flattenSingleValue($newText);
 
-        $left = self::LEFT($oldText, $start-1);
-        $right = self::RIGHT($oldText, self::STRINGLENGTH($oldText)-($start+$chars)+1);
+        $left  = self::LEFT($oldText, $start - 1);
+        $right = self::RIGHT($oldText, self::STRINGLENGTH($oldText) - ($start + $chars) + 1);
 
-        return $left.$newText.$right;
+        return $left . $newText . $right;
     }
 
 
     /**
      * SUBSTITUTE
      *
-     * @param    string    $text        Value
-     * @param    string    $fromText    From Value
-     * @param    string    $toText        To Value
-     * @param    integer    $instance    Instance Number
+     * @param    string  $text     Value
+     * @param    string  $fromText From Value
+     * @param    string  $toText   To Value
+     * @param    integer $instance Instance Number
+     *
      * @return    string
      */
     public static function SUBSTITUTE($text = '', $fromText = '', $toText = '', $instance = 0)
@@ -549,9 +566,9 @@ class PHPExcel_Calculation_TextData
             $pos = -1;
             while ($instance > 0) {
                 if (function_exists('mb_strpos')) {
-                    $pos = mb_strpos($text, $fromText, $pos+1, 'UTF-8');
+                    $pos = mb_strpos($text, $fromText, $pos + 1, 'UTF-8');
                 } else {
-                    $pos = strpos($text, $fromText, $pos+1);
+                    $pos = strpos($text, $fromText, $pos + 1);
                 }
                 if ($pos === false) {
                     break;
@@ -574,7 +591,8 @@ class PHPExcel_Calculation_TextData
     /**
      * RETURNSTRING
      *
-     * @param    mixed    $testValue    Value to check
+     * @param    mixed $testValue Value to check
+     *
      * @return    boolean
      */
     public static function RETURNSTRING($testValue = '')
@@ -591,8 +609,9 @@ class PHPExcel_Calculation_TextData
     /**
      * TEXTFORMAT
      *
-     * @param    mixed    $value    Value to check
-     * @param    string    $format    Format mask to use
+     * @param    mixed  $value  Value to check
+     * @param    string $format Format mask to use
+     *
      * @return    boolean
      */
     public static function TEXTFORMAT($value, $format)
@@ -604,13 +623,14 @@ class PHPExcel_Calculation_TextData
             $value = PHPExcel_Calculation_DateTime::DATEVALUE($value);
         }
 
-        return (string) PHPExcel_Style_NumberFormat::toFormattedString($value, $format);
+        return (string)PHPExcel_Style_NumberFormat::toFormattedString($value, $format);
     }
 
     /**
      * VALUE
      *
-     * @param    mixed    $value    Value to check
+     * @param    mixed $value Value to check
+     *
      * @return    boolean
      */
     public static function VALUE($value = '')
@@ -624,7 +644,7 @@ class PHPExcel_Calculation_TextData
                 trim($value, " \t\n\r\0\x0B" . PHPExcel_Shared_String::getCurrencyCode())
             );
             if (is_numeric($numberValue)) {
-                return (float) $numberValue;
+                return (float)$numberValue;
             }
 
             $dateSetting = PHPExcel_Calculation_Functions::getReturnDateType();
@@ -646,6 +666,6 @@ class PHPExcel_Calculation_TextData
 
             return PHPExcel_Calculation_Functions::VALUE();
         }
-        return (float) $value;
+        return (float)$value;
     }
 }

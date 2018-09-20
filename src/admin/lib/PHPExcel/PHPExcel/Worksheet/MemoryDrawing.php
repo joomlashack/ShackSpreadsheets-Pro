@@ -34,10 +34,10 @@ class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing im
     const RENDERING_JPEG    = 'imagejpeg';
 
     /* MIME types */
-    const MIMETYPE_DEFAULT  = 'image/png';
-    const MIMETYPE_PNG      = 'image/png';
-    const MIMETYPE_GIF      = 'image/gif';
-    const MIMETYPE_JPEG     = 'image/jpeg';
+    const MIMETYPE_DEFAULT = 'image/png';
+    const MIMETYPE_PNG     = 'image/png';
+    const MIMETYPE_GIF     = 'image/gif';
+    const MIMETYPE_JPEG    = 'image/jpeg';
 
     /**
      * Image resource
@@ -76,7 +76,7 @@ class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing im
         $this->imageResource     = null;
         $this->renderingFunction = self::RENDERING_DEFAULT;
         $this->mimeType          = self::MIMETYPE_DEFAULT;
-        $this->uniqueName        = md5(rand(0, 9999). time() . rand(0, 9999));
+        $this->uniqueName        = md5(rand(0, 9999) . time() . rand(0, 9999));
 
         // Initialize parent
         parent::__construct();
@@ -96,6 +96,7 @@ class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing im
      * Set image resource
      *
      * @param    $value resource
+     *
      * @return PHPExcel_Worksheet_MemoryDrawing
      */
     public function setImageResource($value = null)
@@ -124,6 +125,7 @@ class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing im
      * Set rendering function
      *
      * @param string $value
+     *
      * @return PHPExcel_Worksheet_MemoryDrawing
      */
     public function setRenderingFunction($value = PHPExcel_Worksheet_MemoryDrawing::RENDERING_DEFAULT)
@@ -146,6 +148,7 @@ class PHPExcel_Worksheet_MemoryDrawing extends PHPExcel_Worksheet_BaseDrawing im
      * Set mime type
      *
      * @param string $value
+     *
      * @return PHPExcel_Worksheet_MemoryDrawing
      */
     public function setMimeType($value = PHPExcel_Worksheet_MemoryDrawing::MIMETYPE_DEFAULT)

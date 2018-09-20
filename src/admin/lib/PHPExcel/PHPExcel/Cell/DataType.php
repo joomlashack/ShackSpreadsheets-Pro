@@ -28,14 +28,14 @@
 class PHPExcel_Cell_DataType
 {
     /* Data types */
-    const TYPE_STRING2  = 'str';
-    const TYPE_STRING   = 's';
-    const TYPE_FORMULA  = 'f';
-    const TYPE_NUMERIC  = 'n';
-    const TYPE_BOOL     = 'b';
-    const TYPE_NULL     = 'null';
-    const TYPE_INLINE   = 'inlineStr';
-    const TYPE_ERROR    = 'e';
+    const TYPE_STRING2 = 'str';
+    const TYPE_STRING  = 's';
+    const TYPE_FORMULA = 'f';
+    const TYPE_NUMERIC = 'n';
+    const TYPE_BOOL    = 'b';
+    const TYPE_NULL    = 'null';
+    const TYPE_INLINE  = 'inlineStr';
+    const TYPE_ERROR   = 'e';
 
     /**
      * List of error codes
@@ -66,7 +66,9 @@ class PHPExcel_Cell_DataType
      * DataType for value
      *
      * @deprecated  Replaced by PHPExcel_Cell_IValueBinder infrastructure, will be removed in version 1.8.0
-     * @param       mixed  $pValue
+     *
+     * @param       mixed $pValue
+     *
      * @return      string
      */
     public static function dataTypeForValue($pValue = null)
@@ -78,6 +80,7 @@ class PHPExcel_Cell_DataType
      * Check a string that it satisfies Excel requirements
      *
      * @param  mixed  Value to sanitize to an Excel string
+     *
      * @return mixed  Sanitized value
      */
     public static function checkString($pValue = null)
@@ -100,11 +103,12 @@ class PHPExcel_Cell_DataType
      * Check a value that it is a valid error code
      *
      * @param  mixed   Value to sanitize to an Excel error code
+     *
      * @return string  Sanitized value
      */
     public static function checkErrorCode($pValue = null)
     {
-        $pValue = (string) $pValue;
+        $pValue = (string)$pValue;
 
         if (!array_key_exists($pValue, self::$errorCodes)) {
             $pValue = '#NULL!';

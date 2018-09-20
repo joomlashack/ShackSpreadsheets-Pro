@@ -67,11 +67,11 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
     /**
      * Create a new PHPExcel_Style_Border
      *
-     * @param    boolean    $isSupervisor    Flag indicating if this is a supervisor or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isSupervisor        Flag indicating if this is a supervisor or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
-     * @param    boolean    $isConditional    Flag indicating if this is a conditional style or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isConditional       Flag indicating if this is a conditional style or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
      */
     public function __construct($isSupervisor = false, $isConditional = false)
@@ -80,7 +80,7 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
         parent::__construct($isSupervisor);
 
         // Initialise values
-        $this->color    = new PHPExcel_Style_Color(PHPExcel_Style_Color::COLOR_BLACK, $isSupervisor);
+        $this->color = new PHPExcel_Style_Color(PHPExcel_Style_Color::COLOR_BLACK, $isSupervisor);
 
         // bind parent if we are a supervisor
         if ($isSupervisor) {
@@ -92,12 +92,13 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
      * Bind parent. Only used for supervisor
      *
      * @param PHPExcel_Style_Borders $parent
-     * @param string $parentPropertyName
+     * @param string                 $parentPropertyName
+     *
      * @return PHPExcel_Style_Border
      */
     public function bindParent($parent, $parentPropertyName = null)
     {
-        $this->parent = $parent;
+        $this->parent             = $parent;
         $this->parentPropertyName = $parentPropertyName;
         return $this;
     }
@@ -136,6 +137,7 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
      * Build style array from subcomponents
      *
      * @param array $array
+     *
      * @return array
      */
     public function getStyleArray($array)
@@ -171,7 +173,8 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
      * );
      * </code>
      *
-     * @param    array    $pStyles    Array containing style information
+     * @param    array $pStyles Array containing style information
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style_Border
      */
@@ -179,7 +182,9 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
     {
         if (is_array($pStyles)) {
             if ($this->isSupervisor) {
-                $this->getActiveSheet()->getStyle($this->getSelectedCells())->applyFromArray($this->getStyleArray($pStyles));
+                $this->getActiveSheet()
+                    ->getStyle($this->getSelectedCells())
+                    ->applyFromArray($this->getStyleArray($pStyles));
             } else {
                 if (isset($pStyles['style'])) {
                     $this->setBorderStyle($pStyles['style']);
@@ -210,9 +215,10 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
     /**
      * Set Border style
      *
-     * @param string|boolean    $pValue
-     *                            When passing a boolean, FALSE equates PHPExcel_Style_Border::BORDER_NONE
+     * @param string|boolean $pValue
+     *                                When passing a boolean, FALSE equates PHPExcel_Style_Border::BORDER_NONE
      *                                and TRUE to PHPExcel_Style_Border::BORDER_MEDIUM
+     *
      * @return PHPExcel_Style_Border
      */
     public function setBorderStyle($pValue = PHPExcel_Style_Border::BORDER_NONE)
@@ -246,6 +252,7 @@ class PHPExcel_Style_Border extends PHPExcel_Style_Supervisor implements PHPExce
      * Set Border Color
      *
      * @param    PHPExcel_Style_Color $pValue
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style_Border
      */

@@ -60,9 +60,9 @@ class PHPExcel_Worksheet_ColumnIterator implements Iterator
     /**
      * Create a new column iterator
      *
-     * @param    PHPExcel_Worksheet    $subject    The worksheet to iterate over
-     * @param    string                $startColumn    The column address at which to start iterating
-     * @param    string                $endColumn        Optionally, the column address at which to stop iterating
+     * @param    PHPExcel_Worksheet $subject     The worksheet to iterate over
+     * @param    string             $startColumn The column address at which to start iterating
+     * @param    string             $endColumn   Optionally, the column address at which to stop iterating
      */
     public function __construct(PHPExcel_Worksheet $subject = null, $startColumn = 'A', $endColumn = null)
     {
@@ -83,7 +83,8 @@ class PHPExcel_Worksheet_ColumnIterator implements Iterator
     /**
      * (Re)Set the start column and the current column pointer
      *
-     * @param integer    $startColumn    The column address at which to start iterating
+     * @param integer $startColumn The column address at which to start iterating
+     *
      * @return PHPExcel_Worksheet_ColumnIterator
      * @throws PHPExcel_Exception
      */
@@ -106,12 +107,13 @@ class PHPExcel_Worksheet_ColumnIterator implements Iterator
     /**
      * (Re)Set the end column
      *
-     * @param string    $endColumn    The column address at which to stop iterating
+     * @param string $endColumn The column address at which to stop iterating
+     *
      * @return PHPExcel_Worksheet_ColumnIterator
      */
     public function resetEnd($endColumn = null)
     {
-        $endColumn = ($endColumn) ? $endColumn : $this->subject->getHighestColumn();
+        $endColumn       = ($endColumn) ? $endColumn : $this->subject->getHighestColumn();
         $this->endColumn = PHPExcel_Cell::columnIndexFromString($endColumn) - 1;
 
         return $this;
@@ -120,7 +122,8 @@ class PHPExcel_Worksheet_ColumnIterator implements Iterator
     /**
      * Set the column pointer to the selected column
      *
-     * @param string    $column    The column address to set the current pointer at
+     * @param string $column The column address to set the current pointer at
+     *
      * @return PHPExcel_Worksheet_ColumnIterator
      * @throws PHPExcel_Exception
      */

@@ -117,13 +117,13 @@ class PHPExcel_CalcEngine_Logger
     {
         //    Only write the debug log if logging is enabled
         if ($this->writeDebugLog) {
-            $message = implode(func_get_args());
+            $message       = implode(func_get_args());
             $cellReference = implode(' -> ', $this->cellStack->showStack());
             if ($this->echoDebugLog) {
                 echo $cellReference,
-                    ($this->cellStack->count() > 0 ? ' => ' : ''),
-                    $message,
-                    PHP_EOL;
+                ($this->cellStack->count() > 0 ? ' => ' : ''),
+                $message,
+                PHP_EOL;
             }
             $this->debugLog[] = $cellReference .
                 ($this->cellStack->count() > 0 ? ' => ' : '') .

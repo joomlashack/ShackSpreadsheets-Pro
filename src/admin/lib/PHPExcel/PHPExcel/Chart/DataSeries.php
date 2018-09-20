@@ -18,20 +18,20 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Chart
- * @copyright    Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
- * @version    ##VERSION##, ##DATE##
+ * @version        ##VERSION##, ##DATE##
  */
 
 
 /**
  * PHPExcel_Chart_DataSeries
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Chart
- * @copyright    Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  */
 class PHPExcel_Chart_DataSeries
 {
@@ -136,13 +136,22 @@ class PHPExcel_Chart_DataSeries
     /**
      * Create a new PHPExcel_Chart_DataSeries
      */
-    public function __construct($plotType = null, $plotGrouping = null, $plotOrder = array(), $plotLabel = array(), $plotCategory = array(), $plotValues = array(), $plotDirection = null, $smoothLine = null, $plotStyle = null)
-    {
-        $this->plotType = $plotType;
+    public function __construct(
+        $plotType = null,
+        $plotGrouping = null,
+        $plotOrder = array(),
+        $plotLabel = array(),
+        $plotCategory = array(),
+        $plotValues = array(),
+        $plotDirection = null,
+        $smoothLine = null,
+        $plotStyle = null
+    ) {
+        $this->plotType     = $plotType;
         $this->plotGrouping = $plotGrouping;
-        $this->plotOrder = $plotOrder;
-        $keys = array_keys($plotValues);
-        $this->plotValues = $plotValues;
+        $this->plotOrder    = $plotOrder;
+        $keys               = array_keys($plotValues);
+        $this->plotValues   = $plotValues;
         if ((count($plotLabel) == 0) || (is_null($plotLabel[$keys[0]]))) {
             $plotLabel[$keys[0]] = new PHPExcel_Chart_DataSeriesValues();
         }
@@ -152,9 +161,9 @@ class PHPExcel_Chart_DataSeries
             $plotCategory[$keys[0]] = new PHPExcel_Chart_DataSeriesValues();
         }
         $this->plotCategory = $plotCategory;
-        $this->smoothLine = $smoothLine;
-        $this->plotStyle = $plotStyle;
-        
+        $this->smoothLine   = $smoothLine;
+        $this->plotStyle    = $plotStyle;
+
         if (is_null($plotDirection)) {
             $plotDirection = self::DIRECTION_COL;
         }
@@ -175,6 +184,7 @@ class PHPExcel_Chart_DataSeries
      * Set Plot Type
      *
      * @param string $plotType
+     *
      * @return PHPExcel_Chart_DataSeries
      */
     public function setPlotType($plotType = '')
@@ -197,6 +207,7 @@ class PHPExcel_Chart_DataSeries
      * Set Plot Grouping Type
      *
      * @param string $groupingType
+     *
      * @return PHPExcel_Chart_DataSeries
      */
     public function setPlotGrouping($groupingType = null)
@@ -219,6 +230,7 @@ class PHPExcel_Chart_DataSeries
      * Set Plot Direction
      *
      * @param string $plotDirection
+     *
      * @return PHPExcel_Chart_DataSeries
      */
     public function setPlotDirection($plotDirection = null)
@@ -303,6 +315,7 @@ class PHPExcel_Chart_DataSeries
      * Set Plot Style
      *
      * @param string $plotStyle
+     *
      * @return PHPExcel_Chart_DataSeries
      */
     public function setPlotStyle($plotStyle = null)
@@ -361,6 +374,7 @@ class PHPExcel_Chart_DataSeries
      * Set Smooth Line
      *
      * @param boolean $smoothLine
+     *
      * @return PHPExcel_Chart_DataSeries
      */
     public function setSmoothLine($smoothLine = true)

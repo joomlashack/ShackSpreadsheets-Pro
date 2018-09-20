@@ -96,13 +96,13 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
     public function __construct()
     {
         // Initialise values
-        $this->visible     = false;
-        $this->blurRadius  = 6;
-        $this->distance    = 2;
-        $this->direction   = 0;
-        $this->alignment   = PHPExcel_Worksheet_Drawing_Shadow::SHADOW_BOTTOM_RIGHT;
-        $this->color       = new PHPExcel_Style_Color(PHPExcel_Style_Color::COLOR_BLACK);
-        $this->alpha       = 50;
+        $this->visible    = false;
+        $this->blurRadius = 6;
+        $this->distance   = 2;
+        $this->direction  = 0;
+        $this->alignment  = PHPExcel_Worksheet_Drawing_Shadow::SHADOW_BOTTOM_RIGHT;
+        $this->color      = new PHPExcel_Style_Color(PHPExcel_Style_Color::COLOR_BLACK);
+        $this->alpha      = 50;
     }
 
     /**
@@ -119,6 +119,7 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
      * Set Visible
      *
      * @param boolean $pValue
+     *
      * @return PHPExcel_Worksheet_Drawing_Shadow
      */
     public function setVisible($pValue = false)
@@ -141,6 +142,7 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
      * Set Blur radius
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_Drawing_Shadow
      */
     public function setBlurRadius($pValue = 6)
@@ -163,6 +165,7 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
      * Set Shadow distance
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_Drawing_Shadow
      */
     public function setDistance($pValue = 2)
@@ -185,6 +188,7 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
      * Set Shadow direction (in degrees)
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_Drawing_Shadow
      */
     public function setDirection($pValue = 0)
@@ -193,7 +197,7 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
         return $this;
     }
 
-   /**
+    /**
      * Get Shadow alignment
      *
      * @return int
@@ -207,6 +211,7 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
      * Set Shadow alignment
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_Drawing_Shadow
      */
     public function setAlignment($pValue = 0)
@@ -215,7 +220,7 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
         return $this;
     }
 
-   /**
+    /**
      * Get Color
      *
      * @return PHPExcel_Style_Color
@@ -229,16 +234,17 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
      * Set Color
      *
      * @param     PHPExcel_Style_Color $pValue
+     *
      * @throws     PHPExcel_Exception
      * @return PHPExcel_Worksheet_Drawing_Shadow
      */
     public function setColor(PHPExcel_Style_Color $pValue = null)
     {
-           $this->color = $pValue;
-           return $this;
+        $this->color = $pValue;
+        return $this;
     }
 
-   /**
+    /**
      * Get Alpha
      *
      * @return int
@@ -252,6 +258,7 @@ class PHPExcel_Worksheet_Drawing_Shadow implements PHPExcel_IComparable
      * Set Alpha
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Worksheet_Drawing_Shadow
      */
     public function setAlpha($pValue = 0)

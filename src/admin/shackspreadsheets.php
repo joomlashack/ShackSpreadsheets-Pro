@@ -17,10 +17,10 @@ defined('_JEXEC') or die;
 }*/
 
 // Include dependancies
-jimport( 'joomla.application.component.controller' );
+jimport('joomla.application.component.controller');
 
-JLoader::registerPrefix( 'Shackspreadsheets', JPATH_COMPONENT_ADMINISTRATOR );
+JLoader::registerPrefix('Shackspreadsheets', JPATH_COMPONENT_ADMINISTRATOR);
 
-$controller = JControllerLegacy::getInstance( 'Shackspreadsheets', array( 'base_path' => JPATH_COMPONENT_ADMINISTRATOR ) );
-$controller->execute( JFactory::getApplication()->input->get( 'task' ) );
+$controller = JControllerLegacy::getInstance('Shackspreadsheets', array('base_path' => JPATH_COMPONENT_ADMINISTRATOR));
+$controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();

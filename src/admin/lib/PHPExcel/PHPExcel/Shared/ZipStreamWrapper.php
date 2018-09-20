@@ -67,10 +67,11 @@ class PHPExcel_Shared_ZipStreamWrapper
     /**
      * Implements support for fopen().
      *
-     * @param    string    $path            resource name including scheme, e.g.
-     * @param    string    $mode            only "r" is supported
-     * @param    int        $options        mask of STREAM_REPORT_ERRORS and STREAM_USE_PATH
-     * @param    string  &$openedPath    absolute path of the opened stream (out parameter)
+     * @param    string $path        resource name including scheme, e.g.
+     * @param    string $mode        only "r" is supported
+     * @param    int    $options     mask of STREAM_REPORT_ERRORS and STREAM_USE_PATH
+     * @param    string &$openedPath absolute path of the opened stream (out parameter)
+     *
      * @return    bool    true on success
      */
     public function stream_open($path, $mode, $options, &$opened_path)
@@ -80,8 +81,8 @@ class PHPExcel_Shared_ZipStreamWrapper
             throw new PHPExcel_Reader_Exception('Mode ' . $mode . ' is not supported. Only read mode is supported.');
         }
 
-        $pos = strrpos($path, '#');
-        $url['host'] = substr($path, 6, $pos - 6); // 6: strlen('zip://')
+        $pos             = strrpos($path, '#');
+        $url['host']     = substr($path, 6, $pos - 6); // 6: strlen('zip://')
         $url['fragment'] = substr($path, $pos + 1);
 
         // Open archive
@@ -89,8 +90,8 @@ class PHPExcel_Shared_ZipStreamWrapper
         $this->archive->open($url['host']);
 
         $this->fileNameInArchive = $url['fragment'];
-        $this->position = 0;
-        $this->data = $this->archive->getFromName($this->fileNameInArchive);
+        $this->position          = 0;
+        $this->data              = $this->archive->getFromName($this->fileNameInArchive);
 
         return true;
     }
@@ -128,12 +129,13 @@ class PHPExcel_Shared_ZipStreamWrapper
     /**
      * Implements support for fread(), fgets() etc.
      *
-     * @param   int        $count    maximum number of bytes to read
+     * @param   int $count maximum number of bytes to read
+     *
      * @return  string
      */
     public function stream_read($count)
     {
-        $ret = substr($this->data, $this->position, $count);
+        $ret            = substr($this->data, $this->position, $count);
         $this->position += strlen($ret);
         return $ret;
     }
@@ -162,8 +164,9 @@ class PHPExcel_Shared_ZipStreamWrapper
     /**
      * Seek stream
      *
-     * @param    int        $offset    byte offset
-     * @param    int        $whence    SEEK_SET, SEEK_CUR or SEEK_END
+     * @param    int $offset byte offset
+     * @param    int $whence SEEK_SET, SEEK_CUR or SEEK_END
+     *
      * @return    bool
      */
     public function stream_seek($offset, $whence)
@@ -171,26 +174,26 @@ class PHPExcel_Shared_ZipStreamWrapper
         switch ($whence) {
             case SEEK_SET:
                 if ($offset < strlen($this->data) && $offset >= 0) {
-                     $this->position = $offset;
-                     return true;
+                    $this->position = $offset;
+                    return true;
                 } else {
-                     return false;
+                    return false;
                 }
                 break;
             case SEEK_CUR:
                 if ($offset >= 0) {
-                     $this->position += $offset;
-                     return true;
+                    $this->position += $offset;
+                    return true;
                 } else {
-                     return false;
+                    return false;
                 }
                 break;
             case SEEK_END:
                 if (strlen($this->data) + $offset >= 0) {
-                     $this->position = strlen($this->data) + $offset;
-                     return true;
+                    $this->position = strlen($this->data) + $offset;
+                    return true;
                 } else {
-                     return false;
+                    return false;
                 }
                 break;
             default:

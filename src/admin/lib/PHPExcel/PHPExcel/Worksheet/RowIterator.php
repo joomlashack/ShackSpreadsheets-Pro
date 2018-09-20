@@ -60,9 +60,9 @@ class PHPExcel_Worksheet_RowIterator implements Iterator
     /**
      * Create a new row iterator
      *
-     * @param    PHPExcel_Worksheet    $subject    The worksheet to iterate over
-     * @param    integer                $startRow    The row number at which to start iterating
-     * @param    integer                $endRow        Optionally, the row number at which to stop iterating
+     * @param    PHPExcel_Worksheet $subject  The worksheet to iterate over
+     * @param    integer            $startRow The row number at which to start iterating
+     * @param    integer            $endRow   Optionally, the row number at which to stop iterating
      */
     public function __construct(PHPExcel_Worksheet $subject, $startRow = 1, $endRow = null)
     {
@@ -83,7 +83,8 @@ class PHPExcel_Worksheet_RowIterator implements Iterator
     /**
      * (Re)Set the start row and the current row pointer
      *
-     * @param integer    $startRow    The row number at which to start iterating
+     * @param integer $startRow The row number at which to start iterating
+     *
      * @return PHPExcel_Worksheet_RowIterator
      * @throws PHPExcel_Exception
      */
@@ -105,7 +106,8 @@ class PHPExcel_Worksheet_RowIterator implements Iterator
     /**
      * (Re)Set the end row
      *
-     * @param integer    $endRow    The row number at which to stop iterating
+     * @param integer $endRow The row number at which to stop iterating
+     *
      * @return PHPExcel_Worksheet_RowIterator
      */
     public function resetEnd($endRow = null)
@@ -118,7 +120,8 @@ class PHPExcel_Worksheet_RowIterator implements Iterator
     /**
      * Set the row pointer to the selected row
      *
-     * @param integer    $row    The row number to set the current pointer at
+     * @param integer $row The row number to set the current pointer at
+     *
      * @return PHPExcel_Worksheet_RowIterator
      * @throws PHPExcel_Exception
      */

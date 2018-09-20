@@ -31,6 +31,7 @@ if (file_exists(__DIR__ . '/admin/library/Installer/AbstractScript.php')) {
 } else {
     require_once __DIR__ . '/library/Installer/AbstractScript.php';
 }
+
 /**
  * Custom installer script
  */

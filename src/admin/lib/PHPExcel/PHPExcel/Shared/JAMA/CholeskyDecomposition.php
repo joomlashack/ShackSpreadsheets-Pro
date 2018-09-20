@@ -1,6 +1,7 @@
 <?php
+
 /**
- *    @package JAMA
+ * @package JAMA
  *
  *    Cholesky decomposition class
  *
@@ -11,30 +12,33 @@
  *    returns a partial decomposition and sets an internal flag that may
  *    be queried by the isSPD() method.
  *
- *    @author Paul Meagher
- *    @author Michael Bommarito
- *    @version 1.2
+ * @author  Paul Meagher
+ * @author  Michael Bommarito
+ * @version 1.2
  */
 class CholeskyDecomposition
 {
     /**
      *    Decomposition storage
-     *    @var array
-     *    @access private
+     *
+     * @var array
+     * @access private
      */
     private $L = array();
 
     /**
      *    Matrix row and column dimension
-     *    @var int
-     *    @access private
+     *
+     * @var int
+     * @access private
      */
     private $m;
 
     /**
      *    Symmetric positive definite flag
-     *    @var boolean
-     *    @access private
+     *
+     * @var boolean
+     * @access private
      */
     private $isspd = true;
 
@@ -42,7 +46,8 @@ class CholeskyDecomposition
      *    CholeskyDecomposition
      *
      *    Class constructor - decomposes symmetric positive definite matrix
-     *    @param mixed Matrix square symmetric positive definite matrix
+     *
+     * @param mixed Matrix square symmetric positive definite matrix
      */
     public function __construct($A = null)
     {
@@ -68,7 +73,7 @@ class CholeskyDecomposition
                     }
                 }
 
-                for ($k = $i+1; $k < $this->m; ++$k) {
+                for ($k = $i + 1; $k < $this->m; ++$k) {
                     $this->L[$i][$k] = 0.0;
                 }
             }
@@ -80,7 +85,7 @@ class CholeskyDecomposition
     /**
      *    Is the matrix symmetric and positive definite?
      *
-     *    @return boolean
+     * @return boolean
      */
     public function isSPD()
     {
@@ -91,7 +96,8 @@ class CholeskyDecomposition
      *    getL
      *
      *    Return triangular factor.
-     *    @return Matrix Lower triangular matrix
+     *
+     * @return Matrix Lower triangular matrix
      */
     public function getL()
     {
@@ -101,8 +107,9 @@ class CholeskyDecomposition
     /**
      *    Solve A*X = B
      *
-     *    @param $B Row-equal matrix
-     *    @return Matrix L * L' * X = B
+     * @param $B Row-equal matrix
+     *
+     * @return Matrix L * L' * X = B
      */
     public function solve($B = null)
     {

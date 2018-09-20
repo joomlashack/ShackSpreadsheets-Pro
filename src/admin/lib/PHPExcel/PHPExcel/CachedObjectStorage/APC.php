@@ -25,7 +25,8 @@
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  * @version    ##VERSION##, ##DATE##
  */
-class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_CacheBase implements PHPExcel_CachedObjectStorage_ICache
+class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_CacheBase implements
+    PHPExcel_CachedObjectStorage_ICache
 {
     /**
      * Prefix used to uniquely identify cache data for this worksheet
@@ -73,8 +74,10 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
      * Add or Update a cell in cache identified by coordinate address
      *
      * @access  public
-     * @param   string         $pCoord  Coordinate address of the cell to update
-     * @param   PHPExcel_Cell  $cell    Cell to update
+     *
+     * @param   string        $pCoord Coordinate address of the cell to update
+     * @param   PHPExcel_Cell $cell   Cell to update
+     *
      * @return  PHPExcel_Cell
      * @throws  PHPExcel_Exception
      */
@@ -85,8 +88,8 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
         }
         $this->cellCache[$pCoord] = true;
 
-        $this->currentObjectID = $pCoord;
-        $this->currentObject = $cell;
+        $this->currentObjectID    = $pCoord;
+        $this->currentObject      = $cell;
         $this->currentCellIsDirty = true;
 
         return $cell;
@@ -96,7 +99,9 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
      * Is a value set in the current PHPExcel_CachedObjectStorage_ICache for an indexed cell?
      *
      * @access  public
-     * @param   string  $pCoord  Coordinate address of the cell to check
+     *
+     * @param   string $pCoord Coordinate address of the cell to check
+     *
      * @throws  PHPExcel_Exception
      * @return  boolean
      */
@@ -108,11 +113,11 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
                 return true;
             }
             //    Check if the requested entry still exists in apc
-            $success = apc_fetch($this->cachePrefix.$pCoord.'.cache');
+            $success = apc_fetch($this->cachePrefix . $pCoord . '.cache');
             if ($success === false) {
                 //    Entry no longer exists in APC, so clear it from the cache array
                 parent::deleteCacheData($pCoord);
-                throw new PHPExcel_Exception('Cell entry '.$pCoord.' no longer exists in APC cache');
+                throw new PHPExcel_Exception('Cell entry ' . $pCoord . ' no longer exists in APC cache');
             }
             return true;
         }
@@ -123,7 +128,9 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
      * Get cell at a specific coordinate
      *
      * @access  public
-     * @param   string         $pCoord  Coordinate of the cell
+     *
+     * @param   string $pCoord Coordinate of the cell
+     *
      * @throws  PHPExcel_Exception
      * @return  PHPExcel_Cell  Cell that was found, or null if not found
      */
@@ -140,7 +147,7 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
             if ($obj === false) {
                 //    Entry no longer exists in APC, so clear it from the cache array
                 parent::deleteCacheData($pCoord);
-                throw new PHPExcel_Exception('Cell entry '.$pCoord.' no longer exists in APC cache');
+                throw new PHPExcel_Exception('Cell entry ' . $pCoord . ' no longer exists in APC cache');
             }
         } else {
             //    Return null if requested entry doesn't exist in cache
@@ -149,7 +156,7 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
 
         //    Set current entry to the requested entry
         $this->currentObjectID = $pCoord;
-        $this->currentObject = unserialize($obj);
+        $this->currentObject   = unserialize($obj);
         //    Re-attach this as the cell's parent
         $this->currentObject->attach($this);
 
@@ -175,13 +182,15 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
      * Delete a cell in cache identified by coordinate address
      *
      * @access  public
-     * @param   string  $pCoord  Coordinate address of the cell to delete
+     *
+     * @param   string $pCoord Coordinate address of the cell to delete
+     *
      * @throws  PHPExcel_Exception
      */
     public function deleteCacheData($pCoord)
     {
         //    Delete the entry from APC
-        apc_delete($this->cachePrefix.$pCoord.'.cache');
+        apc_delete($this->cachePrefix . $pCoord . '.cache');
 
         //    Delete the entry from our cell address array
         parent::deleteCacheData($pCoord);
@@ -191,7 +200,9 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
      * Clone the cell collection
      *
      * @access  public
-     * @param   PHPExcel_Worksheet  $parent  The new worksheet
+     *
+     * @param   PHPExcel_Worksheet $parent The new worksheet
+     *
      * @throws  PHPExcel_Exception
      * @return  void
      */
@@ -199,9 +210,9 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
     {
         parent::copyCellCollection($parent);
         //    Get a new id for the new file name
-        $baseUnique = $this->getUniqueID();
+        $baseUnique     = $this->getUniqueID();
         $newCachePrefix = substr(md5($baseUnique), 0, 8) . '.';
-        $cacheList = $this->getCellList();
+        $cacheList      = $this->getCellList();
         foreach ($cacheList as $cellID) {
             if ($cellID != $this->currentObjectID) {
                 $obj = apc_fetch($this->cachePrefix . $cellID . '.cache');
@@ -243,7 +254,7 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
     /**
      * Initialise this new cell collection
      *
-     * @param  PHPExcel_Worksheet  $parent     The worksheet for this cell collection
+     * @param  PHPExcel_Worksheet $parent The worksheet for this cell collection
      * @param  array of mixed      $arguments  Additional initialisation arguments
      */
     public function __construct(PHPExcel_Worksheet $parent, $arguments)
@@ -251,9 +262,9 @@ class PHPExcel_CachedObjectStorage_APC extends PHPExcel_CachedObjectStorage_Cach
         $cacheTime = (isset($arguments['cacheTime'])) ? $arguments['cacheTime'] : 600;
 
         if ($this->cachePrefix === null) {
-            $baseUnique = $this->getUniqueID();
+            $baseUnique        = $this->getUniqueID();
             $this->cachePrefix = substr(md5($baseUnique), 0, 8) . '.';
-            $this->cacheTime = $cacheTime;
+            $this->cacheTime   = $cacheTime;
 
             parent::__construct($parent);
         }

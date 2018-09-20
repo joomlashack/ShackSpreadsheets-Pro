@@ -25,7 +25,8 @@
  * @license    http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  * @version    ##VERSION##, ##DATE##
  */
-class PHPExcel_CachedObjectStorage_MemoryGZip extends PHPExcel_CachedObjectStorage_CacheBase implements PHPExcel_CachedObjectStorage_ICache
+class PHPExcel_CachedObjectStorage_MemoryGZip extends PHPExcel_CachedObjectStorage_CacheBase implements
+    PHPExcel_CachedObjectStorage_ICache
 {
     /**
      * Store cell data in cache for the current cell object if it's "dirty",
@@ -40,7 +41,7 @@ class PHPExcel_CachedObjectStorage_MemoryGZip extends PHPExcel_CachedObjectStora
             $this->currentObject->detach();
 
             $this->cellCache[$this->currentObjectID] = gzdeflate(serialize($this->currentObject));
-            $this->currentCellIsDirty = false;
+            $this->currentCellIsDirty                = false;
         }
         $this->currentObjectID = $this->currentObject = null;
     }
@@ -49,8 +50,9 @@ class PHPExcel_CachedObjectStorage_MemoryGZip extends PHPExcel_CachedObjectStora
     /**
      * Add or Update a cell in cache identified by coordinate address
      *
-     * @param    string            $pCoord        Coordinate address of the cell to update
-     * @param    PHPExcel_Cell    $cell        Cell to update
+     * @param    string        $pCoord Coordinate address of the cell to update
+     * @param    PHPExcel_Cell $cell   Cell to update
+     *
      * @return    PHPExcel_Cell
      * @throws    PHPExcel_Exception
      */
@@ -60,8 +62,8 @@ class PHPExcel_CachedObjectStorage_MemoryGZip extends PHPExcel_CachedObjectStora
             $this->storeData();
         }
 
-        $this->currentObjectID = $pCoord;
-        $this->currentObject = $cell;
+        $this->currentObjectID    = $pCoord;
+        $this->currentObject      = $cell;
         $this->currentCellIsDirty = true;
 
         return $cell;
@@ -71,7 +73,8 @@ class PHPExcel_CachedObjectStorage_MemoryGZip extends PHPExcel_CachedObjectStora
     /**
      * Get cell at a specific coordinate
      *
-     * @param     string             $pCoord        Coordinate of the cell
+     * @param     string $pCoord Coordinate of the cell
+     *
      * @throws     PHPExcel_Exception
      * @return     PHPExcel_Cell     Cell that was found, or null if not found
      */
@@ -90,7 +93,7 @@ class PHPExcel_CachedObjectStorage_MemoryGZip extends PHPExcel_CachedObjectStora
 
         //    Set current entry to the requested entry
         $this->currentObjectID = $pCoord;
-        $this->currentObject = unserialize(gzinflate($this->cellCache[$pCoord]));
+        $this->currentObject   = unserialize(gzinflate($this->cellCache[$pCoord]));
         //    Re-attach this as the cell's parent
         $this->currentObject->attach($this);
 

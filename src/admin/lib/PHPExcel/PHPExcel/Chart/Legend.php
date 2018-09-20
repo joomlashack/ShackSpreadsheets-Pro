@@ -19,9 +19,9 @@
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category    PHPExcel
+ * @category       PHPExcel
  * @package        PHPExcel_Chart
- * @copyright    Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
+ * @copyright      Copyright (c) 2006 - 2015 PHPExcel (http://www.codeplex.com/PHPExcel)
  * @license        http://www.gnu.org/licenses/old-licenses/lgpl-2.1.txt    LGPL
  * @version        ##VERSION##, ##DATE##
  */
@@ -75,8 +75,11 @@ class PHPExcel_Chart_Legend
     /**
      *    Create a new PHPExcel_Chart_Legend
      */
-    public function __construct($position = self::POSITION_RIGHT, PHPExcel_Chart_Layout $layout = null, $overlay = false)
-    {
+    public function __construct(
+        $position = self::POSITION_RIGHT,
+        PHPExcel_Chart_Layout $layout = null,
+        $overlay = false
+    ) {
         $this->setPosition($position);
         $this->layout = $layout;
         $this->setOverlay($overlay);
@@ -95,7 +98,7 @@ class PHPExcel_Chart_Legend
     /**
      * Get legend position using an excel string value
      *
-     * @param    string    $position
+     * @param    string $position
      */
     public function setPosition($position = self::POSITION_RIGHT)
     {
@@ -120,7 +123,7 @@ class PHPExcel_Chart_Legend
     /**
      * Set legend position using an Excel internal numeric value
      *
-     * @param    number    $positionXL
+     * @param    number $positionXL
      */
     public function setPositionXL($positionXL = self::xlLegendPositionRight)
     {
@@ -145,7 +148,8 @@ class PHPExcel_Chart_Legend
     /**
      * Set allow overlay of other elements?
      *
-     * @param    boolean    $overlay
+     * @param    boolean $overlay
+     *
      * @return    boolean
      */
     public function setOverlay($overlay = false)

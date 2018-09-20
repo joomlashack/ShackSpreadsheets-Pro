@@ -88,7 +88,8 @@ class PHPExcel_Worksheet_SheetView
      *
      * Valid values range from 10 to 400.
      *
-     * @param     int     $pValue
+     * @param     int $pValue
+     *
      * @throws     PHPExcel_Exception
      * @return PHPExcel_Worksheet_SheetView
      */
@@ -119,7 +120,8 @@ class PHPExcel_Worksheet_SheetView
      *
      * Valid values range from 10 to 400.
      *
-     * @param     int     $pValue
+     * @param     int $pValue
+     *
      * @throws     PHPExcel_Exception
      * @return PHPExcel_Worksheet_SheetView
      */
@@ -151,7 +153,8 @@ class PHPExcel_Worksheet_SheetView
      *        'pageLayout'        self::SHEETVIEW_PAGE_LAYOUT
      *        'pageBreakPreview'  self::SHEETVIEW_PAGE_BREAK_PREVIEW
      *
-     * @param     string     $pValue
+     * @param     string $pValue
+     *
      * @throws     PHPExcel_Exception
      * @return PHPExcel_Worksheet_SheetView
      */

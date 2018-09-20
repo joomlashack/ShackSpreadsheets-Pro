@@ -24,6 +24,7 @@ class PHPExcel_Reader_Excel5_Style_Border
      * OpenOffice documentation: 2.5.11
      *
      * @param int $index
+     *
      * @return string
      */
     public static function lookup($index)

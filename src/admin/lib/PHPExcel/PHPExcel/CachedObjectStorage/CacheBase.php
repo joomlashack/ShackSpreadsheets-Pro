@@ -66,7 +66,7 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Initialise this new cell collection
      *
-     * @param    PHPExcel_Worksheet    $parent        The worksheet for this cell collection
+     * @param    PHPExcel_Worksheet $parent The worksheet for this cell collection
      */
     public function __construct(PHPExcel_Worksheet $parent)
     {
@@ -89,7 +89,8 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Is a value set in the current PHPExcel_CachedObjectStorage_ICache for an indexed cell?
      *
-     * @param    string        $pCoord        Coordinate address of the cell to check
+     * @param    string $pCoord Coordinate address of the cell to check
+     *
      * @return    boolean
      */
     public function isDataSet($pCoord)
@@ -104,8 +105,9 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Move a cell object from one address to another
      *
-     * @param    string        $fromAddress    Current address of the cell to move
-     * @param    string        $toAddress        Destination address of the cell to move
+     * @param    string $fromAddress Current address of the cell to move
+     * @param    string $toAddress   Destination address of the cell to move
+     *
      * @return    boolean
      */
     public function moveCell($fromAddress, $toAddress)
@@ -125,7 +127,8 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Add or Update a cell in cache
      *
-     * @param    PHPExcel_Cell    $cell        Cell to update
+     * @param    PHPExcel_Cell $cell Cell to update
+     *
      * @return    PHPExcel_Cell
      * @throws    PHPExcel_Exception
      */
@@ -137,7 +140,8 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Delete a cell in cache identified by coordinate address
      *
-     * @param    string            $pCoord        Coordinate address of the cell to delete
+     * @param    string $pCoord Coordinate address of the cell to delete
+     *
      * @throws    PHPExcel_Exception
      */
     public function deleteCacheData($pCoord)
@@ -194,11 +198,11 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
         foreach ($this->getCellList() as $coord) {
             sscanf($coord, '%[A-Z]%d', $c, $r);
             $row[$r] = $r;
-            $col[$c] = strlen($c).$c;
+            $col[$c] = strlen($c) . $c;
         }
         if (!empty($row)) {
             // Determine highest column and row
-            $highestRow = max($row);
+            $highestRow    = max($row);
             $highestColumn = substr(max($col), 1);
         }
 
@@ -237,14 +241,15 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     public function getCurrentRow()
     {
         sscanf($this->currentObjectID, '%[A-Z]%d', $column, $row);
-        return (integer) $row;
+        return (integer)$row;
     }
 
     /**
      * Get highest worksheet column
      *
-     * @param   string     $row        Return the highest column for the specified row,
+     * @param   string $row                Return the highest column for the specified row,
      *                                     or the highest column of any row if no row number is passed
+     *
      * @return  string     Highest column name
      */
     public function getHighestColumn($row = null)
@@ -268,8 +273,9 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Get highest worksheet row
      *
-     * @param   string     $column     Return the highest row for the specified column,
+     * @param   string $column             Return the highest row for the specified column,
      *                                     or the highest row of any column if no column letter is passed
+     *
      * @return  int        Highest row number
      */
     public function getHighestRow($column = null)
@@ -309,7 +315,8 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Clone the cell collection
      *
-     * @param    PHPExcel_Worksheet    $parent        The new worksheet
+     * @param    PHPExcel_Worksheet $parent The new worksheet
+     *
      * @return    void
      */
     public function copyCellCollection(PHPExcel_Worksheet $parent)
@@ -326,7 +333,8 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Remove a row, deleting all cells in that row
      *
-     * @param string    $row    Row number to remove
+     * @param string $row Row number to remove
+     *
      * @return void
      */
     public function removeRow($row)
@@ -342,7 +350,8 @@ abstract class PHPExcel_CachedObjectStorage_CacheBase
     /**
      * Remove a column, deleting all cells in that column
      *
-     * @param string    $column    Column ID to remove
+     * @param string $column Column ID to remove
+     *
      * @return void
      */
     public function removeColumn($column)

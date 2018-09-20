@@ -68,7 +68,8 @@ class PHPExcel_Writer_OpenDocument extends PHPExcel_Writer_Abstract implements P
     /**
      * Get writer part
      *
-     * @param  string  $pPartName  Writer part name
+     * @param  string $pPartName Writer part name
+     *
      * @return PHPExcel_Writer_Excel2007_WriterPart
      */
     public function getWriterPart($pPartName = '')
@@ -83,7 +84,8 @@ class PHPExcel_Writer_OpenDocument extends PHPExcel_Writer_Abstract implements P
     /**
      * Save PHPExcel to file
      *
-     * @param  string  $pFilename
+     * @param  string $pFilename
+     *
      * @throws PHPExcel_Writer_Exception
      */
     public function save($pFilename = null)
@@ -132,6 +134,7 @@ class PHPExcel_Writer_OpenDocument extends PHPExcel_Writer_Abstract implements P
      * Create zip object
      *
      * @param string $pFilename
+     *
      * @throws PHPExcel_Writer_Exception
      * @return ZipArchive
      */
@@ -139,13 +142,13 @@ class PHPExcel_Writer_OpenDocument extends PHPExcel_Writer_Abstract implements P
     {
         // Create new ZIP file and open it for writing
         $zipClass = PHPExcel_Settings::getZipClass();
-        $objZip = new $zipClass();
+        $objZip   = new $zipClass();
 
         // Retrieve OVERWRITE and CREATE constants from the instantiated zip class
         // This method of accessing constant values from a dynamic class should work with all appropriate versions of PHP
-        $ro = new ReflectionObject($objZip);
+        $ro           = new ReflectionObject($objZip);
         $zipOverWrite = $ro->getConstant('OVERWRITE');
-        $zipCreate = $ro->getConstant('CREATE');
+        $zipCreate    = $ro->getConstant('CREATE');
 
         if (file_exists($pFilename)) {
             unlink($pFilename);
@@ -178,7 +181,8 @@ class PHPExcel_Writer_OpenDocument extends PHPExcel_Writer_Abstract implements P
     /**
      * Set PHPExcel object
      *
-     * @param  PHPExcel  $pPHPExcel  PHPExcel object
+     * @param  PHPExcel $pPHPExcel PHPExcel object
+     *
      * @throws PHPExcel_Writer_Exception
      * @return PHPExcel_Writer_Excel2007
      */

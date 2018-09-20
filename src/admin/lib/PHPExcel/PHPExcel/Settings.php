@@ -114,8 +114,9 @@ class PHPExcel_Settings
     /**
      * Set the Zip handler Class that PHPExcel should use for Zip file management (PCLZip or ZipArchive)
      *
-     * @param string $zipClass    The Zip handler class that PHPExcel should use for Zip file management
-     *      e.g. PHPExcel_Settings::PCLZip or PHPExcel_Settings::ZipArchive
+     * @param string $zipClass The Zip handler class that PHPExcel should use for Zip file management
+     *                         e.g. PHPExcel_Settings::PCLZip or PHPExcel_Settings::ZipArchive
+     *
      * @return    boolean    Success or failure
      */
     public static function setZipClass($zipClass)
@@ -168,12 +169,15 @@ class PHPExcel_Settings
     /**
      * Set the method that should be used for cell cacheing
      *
-     * @param string $method Name of the cacheing method
-     * @param array $arguments Optional configuration arguments for the cacheing method
+     * @param string $method    Name of the cacheing method
+     * @param array  $arguments Optional configuration arguments for the cacheing method
+     *
      * @return boolean Success or failure
      */
-    public static function setCacheStorageMethod($method = PHPExcel_CachedObjectStorageFactory::cache_in_memory, $arguments = array())
-    {
+    public static function setCacheStorageMethod(
+        $method = PHPExcel_CachedObjectStorageFactory::cache_in_memory,
+        $arguments = array()
+    ) {
         return PHPExcel_CachedObjectStorageFactory::initialize($method, $arguments);
     }
 
@@ -182,6 +186,7 @@ class PHPExcel_Settings
      * Set the locale code to use for formula translations and any special formatting
      *
      * @param string $locale The locale code to use (e.g. "fr" or "pt_br" or "en_uk")
+     *
      * @return boolean Success or failure
      */
     public static function setLocale($locale = 'en_us')
@@ -194,7 +199,7 @@ class PHPExcel_Settings
      * Set details of the external library that PHPExcel should use for rendering charts
      *
      * @param string $libraryName    Internal reference name of the library
-     *    e.g. PHPExcel_Settings::CHART_RENDERER_JPGRAPH
+     *                               e.g. PHPExcel_Settings::CHART_RENDERER_JPGRAPH
      * @param string $libraryBaseDir Directory path to the library's base folder
      *
      * @return    boolean    Success or failure
@@ -211,8 +216,8 @@ class PHPExcel_Settings
     /**
      * Identify to PHPExcel the external library to use for rendering charts
      *
-     * @param string $libraryName    Internal reference name of the library
-     *    e.g. PHPExcel_Settings::CHART_RENDERER_JPGRAPH
+     * @param string $libraryName Internal reference name of the library
+     *                            e.g. PHPExcel_Settings::CHART_RENDERER_JPGRAPH
      *
      * @return    boolean    Success or failure
      */
@@ -230,7 +235,8 @@ class PHPExcel_Settings
     /**
      * Tell PHPExcel where to find the external library to use for rendering charts
      *
-     * @param string $libraryBaseDir    Directory path to the library's base folder
+     * @param string $libraryBaseDir Directory path to the library's base folder
+     *
      * @return    boolean    Success or failure
      */
     public static function setChartRendererPath($libraryBaseDir)
@@ -272,10 +278,10 @@ class PHPExcel_Settings
     /**
      * Set details of the external library that PHPExcel should use for rendering PDF files
      *
-     * @param string $libraryName Internal reference name of the library
-     *     e.g. PHPExcel_Settings::PDF_RENDERER_TCPDF,
-     *     PHPExcel_Settings::PDF_RENDERER_DOMPDF
-     *  or PHPExcel_Settings::PDF_RENDERER_MPDF
+     * @param string $libraryName    Internal reference name of the library
+     *                               e.g. PHPExcel_Settings::PDF_RENDERER_TCPDF,
+     *                               PHPExcel_Settings::PDF_RENDERER_DOMPDF
+     *                               or PHPExcel_Settings::PDF_RENDERER_MPDF
      * @param string $libraryBaseDir Directory path to the library's base folder
      *
      * @return boolean Success or failure
@@ -293,9 +299,9 @@ class PHPExcel_Settings
      * Identify to PHPExcel the external library to use for rendering PDF files
      *
      * @param string $libraryName Internal reference name of the library
-     *     e.g. PHPExcel_Settings::PDF_RENDERER_TCPDF,
-     *    PHPExcel_Settings::PDF_RENDERER_DOMPDF
-     *     or PHPExcel_Settings::PDF_RENDERER_MPDF
+     *                            e.g. PHPExcel_Settings::PDF_RENDERER_TCPDF,
+     *                            PHPExcel_Settings::PDF_RENDERER_DOMPDF
+     *                            or PHPExcel_Settings::PDF_RENDERER_MPDF
      *
      * @return boolean Success or failure
      */
@@ -314,6 +320,7 @@ class PHPExcel_Settings
      * Tell PHPExcel where to find the external library to use for rendering PDF files
      *
      * @param string $libraryBaseDir Directory path to the library's base folder
+     *
      * @return boolean Success or failure
      */
     public static function setPdfRendererPath($libraryBaseDir)
@@ -355,7 +362,7 @@ class PHPExcel_Settings
     /**
      * Set options for libxml loader
      *
-     * @param   int   $options   Options for libxml loader
+     * @param   int $options Options for libxml loader
      */
     public static function setLibXmlLoaderOptions($options = null)
     {
@@ -363,7 +370,7 @@ class PHPExcel_Settings
             $options = LIBXML_DTDLOAD | LIBXML_DTDATTR;
         }
         if (version_compare(PHP_VERSION, '5.2.11') >= 0) {
-            @libxml_disable_entity_loader((bool) $options);
+            @libxml_disable_entity_loader((bool)$options);
         }
         self::$libXmlLoaderOptions = $options;
     }
@@ -382,7 +389,7 @@ class PHPExcel_Settings
             self::$libXmlLoaderOptions = true;
         }
         if (version_compare(PHP_VERSION, '5.2.11') >= 0) {
-            @libxml_disable_entity_loader((bool) self::$libXmlLoaderOptions);
+            @libxml_disable_entity_loader((bool)self::$libXmlLoaderOptions);
         }
         return self::$libXmlLoaderOptions;
     }

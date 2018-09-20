@@ -24,6 +24,7 @@ if (!defined('PHPEXCEL_ROOT')) {
  *    @license PHP v3.0
  *    @see http://math.nist.gov/javanumerics/jama/
  */
+
 class PHPExcel_Shared_JAMA_Matrix
 {
     const POLYMORPHIC_ARGUMENT_EXCEPTION = "Invalid argument pattern for polymorphic function.";
@@ -35,36 +36,38 @@ class PHPExcel_Shared_JAMA_Matrix
     /**
      *    Matrix storage
      *
-     *    @var array
-     *    @access public
+     * @var array
+     * @access public
      */
     public $A = array();
 
     /**
      *    Matrix row dimension
      *
-     *    @var int
-     *    @access private
+     * @var int
+     * @access private
      */
     private $m;
 
     /**
      *    Matrix column dimension
      *
-     *    @var int
-     *    @access private
+     * @var int
+     * @access private
      */
     private $n;
 
     /**
      *    Polymorphic constructor
      *
-     *    As PHP has no support for polymorphic constructors, we hack our own sort of polymorphism using func_num_args, func_get_arg, and gettype. In essence, we're just implementing a simple RTTI filter and calling the appropriate constructor.
+     *    As PHP has no support for polymorphic constructors, we hack our own sort of polymorphism using func_num_args,
+     *    func_get_arg, and gettype. In essence, we're just implementing a simple RTTI filter and calling the
+     *    appropriate constructor.
      */
     public function __construct()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -116,7 +119,7 @@ class PHPExcel_Shared_JAMA_Matrix
     /**
      *    getArray
      *
-     *    @return array Matrix array
+     * @return array Matrix array
      */
     public function getArray()
     {
@@ -126,7 +129,7 @@ class PHPExcel_Shared_JAMA_Matrix
     /**
      *    getRowDimension
      *
-     *    @return int Row dimension
+     * @return int Row dimension
      */
     public function getRowDimension()
     {
@@ -136,7 +139,7 @@ class PHPExcel_Shared_JAMA_Matrix
     /**
      *    getColumnDimension
      *
-     *    @return int Column dimension
+     * @return int Column dimension
      */
     public function getColumnDimension()
     {
@@ -147,9 +150,11 @@ class PHPExcel_Shared_JAMA_Matrix
      *    get
      *
      *    Get the i,j-th element of the matrix.
-     *    @param int $i Row position
-     *    @param int $j Column position
-     *    @return mixed Element (int/float/double)
+     *
+     * @param int $i Row position
+     * @param int $j Column position
+     *
+     * @return mixed Element (int/float/double)
      */
     public function get($i = null, $j = null)
     {
@@ -160,16 +165,18 @@ class PHPExcel_Shared_JAMA_Matrix
      *    getMatrix
      *
      *    Get a submatrix
-     *    @param int $i0 Initial row index
-     *    @param int $iF Final row index
-     *    @param int $j0 Initial column index
-     *    @param int $jF Final column index
-     *    @return Matrix Submatrix
+     *
+     * @param int $i0 Initial row index
+     * @param int $iF Final row index
+     * @param int $j0 Initial column index
+     * @param int $jF Final column index
+     *
+     * @return Matrix Submatrix
      */
     public function getMatrix()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -207,7 +214,7 @@ class PHPExcel_Shared_JAMA_Matrix
                     } else {
                         throw new PHPExcel_Calculation_Exception(self::ARGUMENT_BOUNDS_EXCEPTION);
                     }
-                    $R = new PHPExcel_Shared_JAMA_Matrix($m+1, $n+1);
+                    $R = new PHPExcel_Shared_JAMA_Matrix($m + 1, $n + 1);
                     for ($i = $i0; $i <= $iF; ++$i) {
                         for ($j = $j0; $j <= $jF; ++$j) {
                             $R->set($i - $i0, $j - $j0, $this->A[$i][$j]);
@@ -291,7 +298,7 @@ class PHPExcel_Shared_JAMA_Matrix
                     } else {
                         throw new PHPExcel_Calculation_Exception(self::ARGUMENT_BOUNDS_EXCEPTION);
                     }
-                    $R = new PHPExcel_Shared_JAMA_Matrix($m, $n+1);
+                    $R = new PHPExcel_Shared_JAMA_Matrix($m, $n + 1);
                     for ($i = 0; $i < $m; ++$i) {
                         for ($j = $j0; $j <= $jF; ++$j) {
                             $R->set($i, $j - $j0, $this->A[$RL[$i]][$j]);
@@ -312,8 +319,10 @@ class PHPExcel_Shared_JAMA_Matrix
      *    checkMatrixDimensions
      *
      *    Is matrix B the same size?
-     *    @param Matrix $B Matrix B
-     *    @return boolean
+     *
+     * @param Matrix $B Matrix B
+     *
+     * @return boolean
      */
     public function checkMatrixDimensions($B = null)
     {
@@ -332,10 +341,12 @@ class PHPExcel_Shared_JAMA_Matrix
      *    set
      *
      *    Set the i,j-th element of the matrix.
-     *    @param int $i Row position
-     *    @param int $j Column position
-     *    @param mixed $c Int/float/double value
-     *    @return mixed Element (int/float/double)
+     *
+     * @param int   $i Row position
+     * @param int   $j Column position
+     * @param mixed $c Int/float/double value
+     *
+     * @return mixed Element (int/float/double)
      */
     public function set($i = null, $j = null, $c = null)
     {
@@ -347,9 +358,11 @@ class PHPExcel_Shared_JAMA_Matrix
      *    identity
      *
      *    Generate an identity matrix.
-     *    @param int $m Row dimension
-     *    @param int $n Column dimension
-     *    @return Matrix Identity matrix
+     *
+     * @param int $m Row dimension
+     * @param int $n Column dimension
+     *
+     * @return Matrix Identity matrix
      */
     public function identity($m = null, $n = null)
     {
@@ -360,10 +373,12 @@ class PHPExcel_Shared_JAMA_Matrix
      *    diagonal
      *
      *    Generate a diagonal matrix
-     *    @param int $m Row dimension
-     *    @param int $n Column dimension
-     *    @param mixed $c Diagonal value
-     *    @return Matrix Diagonal matrix
+     *
+     * @param int   $m Row dimension
+     * @param int   $n Column dimension
+     * @param mixed $c Diagonal value
+     *
+     * @return Matrix Diagonal matrix
      */
     public function diagonal($m = null, $n = null, $c = 1)
     {
@@ -378,9 +393,11 @@ class PHPExcel_Shared_JAMA_Matrix
      *    getMatrixByRow
      *
      *    Get a submatrix by row index/range
-     *    @param int $i0 Initial row index
-     *    @param int $iF Final row index
-     *    @return Matrix Submatrix
+     *
+     * @param int $i0 Initial row index
+     * @param int $iF Final row index
+     *
+     * @return Matrix Submatrix
      */
     public function getMatrixByRow($i0 = null, $iF = null)
     {
@@ -399,9 +416,11 @@ class PHPExcel_Shared_JAMA_Matrix
      *    getMatrixByCol
      *
      *    Get a submatrix by column index/range
-     *    @param int $i0 Initial column index
-     *    @param int $iF Final column index
-     *    @return Matrix Submatrix
+     *
+     * @param int $i0 Initial column index
+     * @param int $iF Final column index
+     *
+     * @return Matrix Submatrix
      */
     public function getMatrixByCol($j0 = null, $jF = null)
     {
@@ -420,7 +439,8 @@ class PHPExcel_Shared_JAMA_Matrix
      *    transpose
      *
      *    Tranpose matrix
-     *    @return Matrix Transposed matrix
+     *
+     * @return Matrix Transposed matrix
      */
     public function transpose()
     {
@@ -437,7 +457,8 @@ class PHPExcel_Shared_JAMA_Matrix
      *    trace
      *
      *    Sum of diagonal elements
-     *    @return float Sum of diagonal elements
+     *
+     * @return float Sum of diagonal elements
      */
     public function trace()
     {
@@ -453,7 +474,8 @@ class PHPExcel_Shared_JAMA_Matrix
      *    uminus
      *
      *    Unary minus matrix -A
-     *    @return Matrix Unary minus matrix
+     *
+     * @return Matrix Unary minus matrix
      */
     public function uminus()
     {
@@ -463,13 +485,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *    plus
      *
      *    A + B
-     *    @param mixed $B Matrix/Array
-     *    @return Matrix Sum
+     *
+     * @param mixed $B Matrix/Array
+     *
+     * @return Matrix Sum
      */
     public function plus()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -503,13 +527,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *    plusEquals
      *
      *    A = A + B
-     *    @param mixed $B Matrix/Array
-     *    @return Matrix Sum
+     *
+     * @param mixed $B Matrix/Array
+     *
+     * @return Matrix Sum
      */
     public function plusEquals()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -531,13 +557,13 @@ class PHPExcel_Shared_JAMA_Matrix
             for ($i = 0; $i < $this->m; ++$i) {
                 for ($j = 0; $j < $this->n; ++$j) {
                     $validValues = true;
-                    $value = $M->get($i, $j);
+                    $value       = $M->get($i, $j);
                     if ((is_string($this->A[$i][$j])) && (strlen($this->A[$i][$j]) > 0) && (!is_numeric($this->A[$i][$j]))) {
                         $this->A[$i][$j] = trim($this->A[$i][$j], '"');
-                        $validValues &= PHPExcel_Shared_String::convertToNumberIfFraction($this->A[$i][$j]);
+                        $validValues     &= PHPExcel_Shared_String::convertToNumberIfFraction($this->A[$i][$j]);
                     }
                     if ((is_string($value)) && (strlen($value) > 0) && (!is_numeric($value))) {
-                        $value = trim($value, '"');
+                        $value       = trim($value, '"');
                         $validValues &= PHPExcel_Shared_String::convertToNumberIfFraction($value);
                     }
                     if ($validValues) {
@@ -557,13 +583,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *    minus
      *
      *    A - B
-     *    @param mixed $B Matrix/Array
-     *    @return Matrix Sum
+     *
+     * @param mixed $B Matrix/Array
+     *
+     * @return Matrix Sum
      */
     public function minus()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -597,13 +625,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *    minusEquals
      *
      *    A = A - B
-     *    @param mixed $B Matrix/Array
-     *    @return Matrix Sum
+     *
+     * @param mixed $B Matrix/Array
+     *
+     * @return Matrix Sum
      */
     public function minusEquals()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -625,13 +655,13 @@ class PHPExcel_Shared_JAMA_Matrix
             for ($i = 0; $i < $this->m; ++$i) {
                 for ($j = 0; $j < $this->n; ++$j) {
                     $validValues = true;
-                    $value = $M->get($i, $j);
+                    $value       = $M->get($i, $j);
                     if ((is_string($this->A[$i][$j])) && (strlen($this->A[$i][$j]) > 0) && (!is_numeric($this->A[$i][$j]))) {
                         $this->A[$i][$j] = trim($this->A[$i][$j], '"');
-                        $validValues &= PHPExcel_Shared_String::convertToNumberIfFraction($this->A[$i][$j]);
+                        $validValues     &= PHPExcel_Shared_String::convertToNumberIfFraction($this->A[$i][$j]);
                     }
                     if ((is_string($value)) && (strlen($value) > 0) && (!is_numeric($value))) {
-                        $value = trim($value, '"');
+                        $value       = trim($value, '"');
                         $validValues &= PHPExcel_Shared_String::convertToNumberIfFraction($value);
                     }
                     if ($validValues) {
@@ -652,13 +682,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *
      *    Element-by-element multiplication
      *    Cij = Aij * Bij
-     *    @param mixed $B Matrix/Array
-     *    @return Matrix Matrix Cij
+     *
+     * @param mixed $B Matrix/Array
+     *
+     * @return Matrix Matrix Cij
      */
     public function arrayTimes()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -693,13 +725,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *
      *    Element-by-element multiplication
      *    Aij = Aij * Bij
-     *    @param mixed $B Matrix/Array
-     *    @return Matrix Matrix Aij
+     *
+     * @param mixed $B Matrix/Array
+     *
+     * @return Matrix Matrix Aij
      */
     public function arrayTimesEquals()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -721,13 +755,13 @@ class PHPExcel_Shared_JAMA_Matrix
             for ($i = 0; $i < $this->m; ++$i) {
                 for ($j = 0; $j < $this->n; ++$j) {
                     $validValues = true;
-                    $value = $M->get($i, $j);
+                    $value       = $M->get($i, $j);
                     if ((is_string($this->A[$i][$j])) && (strlen($this->A[$i][$j]) > 0) && (!is_numeric($this->A[$i][$j]))) {
                         $this->A[$i][$j] = trim($this->A[$i][$j], '"');
-                        $validValues &= PHPExcel_Shared_String::convertToNumberIfFraction($this->A[$i][$j]);
+                        $validValues     &= PHPExcel_Shared_String::convertToNumberIfFraction($this->A[$i][$j]);
                     }
                     if ((is_string($value)) && (strlen($value) > 0) && (!is_numeric($value))) {
-                        $value = trim($value, '"');
+                        $value       = trim($value, '"');
                         $validValues &= PHPExcel_Shared_String::convertToNumberIfFraction($value);
                     }
                     if ($validValues) {
@@ -748,13 +782,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *
      *    Element-by-element right division
      *    A / B
-     *    @param Matrix $B Matrix B
-     *    @return Matrix Division result
+     *
+     * @param Matrix $B Matrix B
+     *
+     * @return Matrix Division result
      */
     public function arrayRightDivide()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -776,13 +812,13 @@ class PHPExcel_Shared_JAMA_Matrix
             for ($i = 0; $i < $this->m; ++$i) {
                 for ($j = 0; $j < $this->n; ++$j) {
                     $validValues = true;
-                    $value = $M->get($i, $j);
+                    $value       = $M->get($i, $j);
                     if ((is_string($this->A[$i][$j])) && (strlen($this->A[$i][$j]) > 0) && (!is_numeric($this->A[$i][$j]))) {
                         $this->A[$i][$j] = trim($this->A[$i][$j], '"');
-                        $validValues &= PHPExcel_Shared_String::convertToNumberIfFraction($this->A[$i][$j]);
+                        $validValues     &= PHPExcel_Shared_String::convertToNumberIfFraction($this->A[$i][$j]);
                     }
                     if ((is_string($value)) && (strlen($value) > 0) && (!is_numeric($value))) {
-                        $value = trim($value, '"');
+                        $value       = trim($value, '"');
                         $validValues &= PHPExcel_Shared_String::convertToNumberIfFraction($value);
                     }
                     if ($validValues) {
@@ -809,13 +845,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *
      *    Element-by-element right division
      *    Aij = Aij / Bij
-     *    @param mixed $B Matrix/Array
-     *    @return Matrix Matrix Aij
+     *
+     * @param mixed $B Matrix/Array
+     *
+     * @return Matrix Matrix Aij
      */
     public function arrayRightDivideEquals()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -851,13 +889,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *
      *    Element-by-element Left division
      *    A / B
-     *    @param Matrix $B Matrix B
-     *    @return Matrix Division result
+     *
+     * @param Matrix $B Matrix B
+     *
+     * @return Matrix Division result
      */
     public function arrayLeftDivide()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -893,13 +933,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *
      *    Element-by-element Left division
      *    Aij = Aij / Bij
-     *    @param mixed $B Matrix/Array
-     *    @return Matrix Matrix Aij
+     *
+     * @param mixed $B Matrix/Array
+     *
+     * @return Matrix Matrix Aij
      */
     public function arrayLeftDivideEquals()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -934,8 +976,10 @@ class PHPExcel_Shared_JAMA_Matrix
      *    times
      *
      *    Matrix multiplication
-     *    @param mixed $n Matrix/Array/Scalar
-     *    @return Matrix Product
+     *
+     * @param mixed $n Matrix/Array/Scalar
+     *
+     * @return Matrix Product
      */
     public function times()
     {
@@ -958,7 +1002,7 @@ class PHPExcel_Shared_JAMA_Matrix
                             }
                             for ($i = 0; $i < $this->m; ++$i) {
                                 $Arowi = $this->A[$i];
-                                $s = 0;
+                                $s     = 0;
                                 for ($k = 0; $k < $this->n; ++$k) {
                                     $s += $Arowi[$k] * $Bcolj[$k];
                                 }
@@ -1029,13 +1073,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *    power
      *
      *    A = A ^ B
-     *    @param mixed $B Matrix/Array
-     *    @return Matrix Sum
+     *
+     * @param mixed $B Matrix/Array
+     *
+     * @return Matrix Sum
      */
     public function power()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -1057,13 +1103,13 @@ class PHPExcel_Shared_JAMA_Matrix
             for ($i = 0; $i < $this->m; ++$i) {
                 for ($j = 0; $j < $this->n; ++$j) {
                     $validValues = true;
-                    $value = $M->get($i, $j);
+                    $value       = $M->get($i, $j);
                     if ((is_string($this->A[$i][$j])) && (strlen($this->A[$i][$j]) > 0) && (!is_numeric($this->A[$i][$j]))) {
                         $this->A[$i][$j] = trim($this->A[$i][$j], '"');
-                        $validValues &= PHPExcel_Shared_String::convertToNumberIfFraction($this->A[$i][$j]);
+                        $validValues     &= PHPExcel_Shared_String::convertToNumberIfFraction($this->A[$i][$j]);
                     }
                     if ((is_string($value)) && (strlen($value) > 0) && (!is_numeric($value))) {
-                        $value = trim($value, '"');
+                        $value       = trim($value, '"');
                         $validValues &= PHPExcel_Shared_String::convertToNumberIfFraction($value);
                     }
                     if ($validValues) {
@@ -1083,13 +1129,15 @@ class PHPExcel_Shared_JAMA_Matrix
      *    concat
      *
      *    A = A & B
-     *    @param mixed $B Matrix/Array
-     *    @return Matrix Sum
+     *
+     * @param mixed $B Matrix/Array
+     *
+     * @return Matrix Sum
      */
     public function concat()
     {
         if (func_num_args() > 0) {
-            $args = func_get_args();
+            $args  = func_get_args();
             $match = implode(",", array_map('gettype', $args));
 
             switch ($match) {
@@ -1109,7 +1157,7 @@ class PHPExcel_Shared_JAMA_Matrix
             $this->checkMatrixDimensions($M);
             for ($i = 0; $i < $this->m; ++$i) {
                 for ($j = 0; $j < $this->n; ++$j) {
-                    $this->A[$i][$j] = trim($this->A[$i][$j], '"').trim($M->get($i, $j), '"');
+                    $this->A[$i][$j] = trim($this->A[$i][$j], '"') . trim($M->get($i, $j), '"');
                 }
             }
             return $this;
@@ -1121,8 +1169,9 @@ class PHPExcel_Shared_JAMA_Matrix
     /**
      *    Solve A*X = B.
      *
-     *    @param Matrix $B Right hand side
-     *    @return Matrix ... Solution if A is square, least squares solution otherwise
+     * @param Matrix $B Right hand side
+     *
+     * @return Matrix ... Solution if A is square, least squares solution otherwise
      */
     public function solve($B)
     {
@@ -1138,7 +1187,7 @@ class PHPExcel_Shared_JAMA_Matrix
     /**
      *    Matrix inverse or pseudoinverse.
      *
-     *    @return Matrix ... Inverse(A) if A is square, pseudoinverse otherwise.
+     * @return Matrix ... Inverse(A) if A is square, pseudoinverse otherwise.
      */
     public function inverse()
     {
@@ -1149,7 +1198,8 @@ class PHPExcel_Shared_JAMA_Matrix
      *    det
      *
      *    Calculate determinant
-     *    @return float Determinant
+     *
+     * @return float Determinant
      */
     public function det()
     {

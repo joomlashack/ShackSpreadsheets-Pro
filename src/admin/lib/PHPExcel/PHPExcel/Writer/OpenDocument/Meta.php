@@ -30,7 +30,8 @@ class PHPExcel_Writer_OpenDocument_Meta extends PHPExcel_Writer_OpenDocument_Wri
     /**
      * Write meta.xml to XML format
      *
-     * @param   PHPExcel                   $pPHPExcel
+     * @param   PHPExcel $pPHPExcel
+     *
      * @return  string                     XML Output
      * @throws  PHPExcel_Writer_Exception
      */
@@ -42,7 +43,8 @@ class PHPExcel_Writer_OpenDocument_Meta extends PHPExcel_Writer_OpenDocument_Wri
 
         $objWriter = null;
         if ($this->getParentWriter()->getUseDiskCaching()) {
-            $objWriter = new PHPExcel_Shared_XMLWriter(PHPExcel_Shared_XMLWriter::STORAGE_DISK, $this->getParentWriter()->getDiskCachingDirectory());
+            $objWriter = new PHPExcel_Shared_XMLWriter(PHPExcel_Shared_XMLWriter::STORAGE_DISK,
+                $this->getParentWriter()->getDiskCachingDirectory());
         } else {
             $objWriter = new PHPExcel_Shared_XMLWriter(PHPExcel_Shared_XMLWriter::STORAGE_MEMORY);
         }
@@ -80,7 +82,7 @@ class PHPExcel_Writer_OpenDocument_Meta extends PHPExcel_Writer_OpenDocument_Wri
         $objWriter->writeAttribute('meta:name', 'Company');
         $objWriter->writeRaw($pPHPExcel->getProperties()->getCompany());
         $objWriter->endElement();
- 
+
         $objWriter->startElement('meta:user-defined');
         $objWriter->writeAttribute('meta:name', 'category');
         $objWriter->writeRaw($pPHPExcel->getProperties()->getCategory());

@@ -34,21 +34,22 @@
             <folder>lib</folder>
         </files>
         <languages folder="admin/language">
-			<language tag="en-GB">en-GB/en-GB.com_shackspreadsheets.ini</language>
-			<language tag="en-GB">en-GB/en-GB.com_shackspreadsheets.sys.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_shackspreadsheets.ini</language>
+            <language tag="en-GB">en-GB/en-GB.com_shackspreadsheets.sys.ini</language>
         </languages>
     </administration>
 
     <config>
         <fields name="params">
             <fieldset name="component">
-                <field name="save_history" default="0" />
+                <field name="save_history" default="0"/>
             </fieldset>
         </fields>
     </config>
 
     <updateservers>
-        <server type="extension" priority="1" name="Shack Spreadsheets Pro"><![CDATA[https://deploy.ostraining.com/client/update/pro/stable/com_shackspreadsheets]]></server>
+        <server type="extension" priority="1" name="Shack Spreadsheets Pro">
+            <![CDATA[https://deploy.ostraining.com/client/update/pro/stable/com_shackspreadsheets]]></server>
     </updateservers>
 
 
@@ -62,27 +63,31 @@
         <relatedExtensions uninstall="true" publish="true">
             <extension type="library"
                        element="allediaframework"
-                       uninstall="false">AllediaFramework</extension>
+                       uninstall="false">AllediaFramework
+            </extension>
 
             <extension type="plugin"
                        group="system"
                        element="ossystem"
                        ordering="first"
-                       uninstall="false">OSSystem</extension>
+                       uninstall="false">OSSystem
+            </extension>
 
             <extension type="plugin"
                        group="system"
                        element="osmylicensesmanager"
                        ordering="last"
-                       uninstall="false">OSMyLicensesManager</extension>
+                       uninstall="false">OSMyLicensesManager
+            </extension>
 
             <extension type="plugin"
                        group="editors-xtd"
-                       element="xtd_shackspreadsheets">plg_editors-xtd_shackspreadsheets</extension>
+                       element="xtd_shackspreadsheets">plg_editors-xtd_shackspreadsheets
+            </extension>
         </relatedExtensions>
 
         <include>AllediaFreeDefaultFiles</include>
     </alledia>
 </extension>
-<!-- Component built by the Joomla Component Creator -->
-<!-- http://www.component-creator.com/ -->
+    <!-- Component built by the Joomla Component Creator -->
+    <!-- http://www.component-creator.com/ -->

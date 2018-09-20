@@ -36,6 +36,7 @@ interface PHPExcel_RichText_ITextElement
      * Set text
      *
      * @param     $pText string    Text
+     *
      * @return PHPExcel_RichText_ITextElement
      */
     public function setText($pText = '');

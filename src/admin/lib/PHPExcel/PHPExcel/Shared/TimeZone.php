@@ -42,12 +42,13 @@ class PHPExcel_Shared_TimeZone
      * @private
      * @var    string
      */
-    protected static $timezone    = 'UTC';
+    protected static $timezone = 'UTC';
 
     /**
      * Validate a Timezone name
      *
-     * @param     string        $timezone            Time zone (e.g. 'Europe/London')
+     * @param     string $timezone Time zone (e.g. 'Europe/London')
+     *
      * @return     boolean                        Success or failure
      */
     public static function _validateTimeZone($timezone)
@@ -61,7 +62,8 @@ class PHPExcel_Shared_TimeZone
     /**
      * Set the Default Timezone used for date/time conversions
      *
-     * @param     string        $timezone            Time zone (e.g. 'Europe/London')
+     * @param     string $timezone Time zone (e.g. 'Europe/London')
+     *
      * @return     boolean                        Success or failure
      */
     public static function setTimeZone($timezone)
@@ -88,14 +90,15 @@ class PHPExcel_Shared_TimeZone
     /**
      *    Return the Timezone transition for the specified timezone and timestamp
      *
-     *    @param        DateTimeZone         $objTimezone    The timezone for finding the transitions
-     *    @param        integer                 $timestamp        PHP date/time value for finding the current transition
-     *    @return         array                The current transition details
+     * @param        DateTimeZone $objTimezone The timezone for finding the transitions
+     * @param        integer      $timestamp   PHP date/time value for finding the current transition
+     *
+     * @return         array                The current transition details
      */
     private static function getTimezoneTransitions($objTimezone, $timestamp)
     {
         $allTransitions = $objTimezone->getTransitions();
-        $transitions = array();
+        $transitions    = array();
         foreach ($allTransitions as $key => $transition) {
             if ($transition['ts'] > $timestamp) {
                 $transitions[] = ($key > 0) ? $allTransitions[$key - 1] : $transition;
@@ -113,10 +116,11 @@ class PHPExcel_Shared_TimeZone
      *    Return the Timezone offset used for date/time conversions to/from UST
      *    This requires both the timezone and the calculated date/time to allow for local DST
      *
-     *    @param        string                 $timezone        The timezone for finding the adjustment to UST
-     *    @param        integer                 $timestamp        PHP date/time value
-     *    @return         integer                Number of seconds for timezone adjustment
-     *    @throws        PHPExcel_Exception
+     * @param        string  $timezone  The timezone for finding the adjustment to UST
+     * @param        integer $timestamp PHP date/time value
+     *
+     * @return         integer                Number of seconds for timezone adjustment
+     * @throws        PHPExcel_Exception
      */
     public static function getTimeZoneAdjustment($timezone, $timestamp)
     {

@@ -113,11 +113,11 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
     /**
      * Create a new PHPExcel_Style_Borders
      *
-     * @param    boolean    $isSupervisor    Flag indicating if this is a supervisor or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isSupervisor        Flag indicating if this is a supervisor or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
-     * @param    boolean    $isConditional    Flag indicating if this is a conditional style or not
-     *                                    Leave this value at default unless you understand exactly what
+     * @param    boolean $isConditional       Flag indicating if this is a conditional style or not
+     *                                        Leave this value at default unless you understand exactly what
      *                                        its ramifications are
      */
     public function __construct($isSupervisor = false, $isConditional = false)
@@ -126,20 +126,20 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
         parent::__construct($isSupervisor);
 
         // Initialise values
-        $this->left = new PHPExcel_Style_Border($isSupervisor, $isConditional);
-        $this->right = new PHPExcel_Style_Border($isSupervisor, $isConditional);
-        $this->top = new PHPExcel_Style_Border($isSupervisor, $isConditional);
-        $this->bottom = new PHPExcel_Style_Border($isSupervisor, $isConditional);
-        $this->diagonal = new PHPExcel_Style_Border($isSupervisor, $isConditional);
+        $this->left              = new PHPExcel_Style_Border($isSupervisor, $isConditional);
+        $this->right             = new PHPExcel_Style_Border($isSupervisor, $isConditional);
+        $this->top               = new PHPExcel_Style_Border($isSupervisor, $isConditional);
+        $this->bottom            = new PHPExcel_Style_Border($isSupervisor, $isConditional);
+        $this->diagonal          = new PHPExcel_Style_Border($isSupervisor, $isConditional);
         $this->diagonalDirection = PHPExcel_Style_Borders::DIAGONAL_NONE;
 
         // Specially for supervisor
         if ($isSupervisor) {
             // Initialize pseudo-borders
             $this->allBorders = new PHPExcel_Style_Border(true);
-            $this->outline = new PHPExcel_Style_Border(true);
-            $this->inside = new PHPExcel_Style_Border(true);
-            $this->vertical = new PHPExcel_Style_Border(true);
+            $this->outline    = new PHPExcel_Style_Border(true);
+            $this->inside     = new PHPExcel_Style_Border(true);
+            $this->vertical   = new PHPExcel_Style_Border(true);
             $this->horizontal = new PHPExcel_Style_Border(true);
 
             // bind parent if we are a supervisor
@@ -171,6 +171,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      * Build style array from subcomponents
      *
      * @param array $array
+     *
      * @return array
      */
     public function getStyleArray($array)
@@ -212,7 +213,8 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      * );
      * </code>
      *
-     * @param    array    $pStyles    Array containing style information
+     * @param    array $pStyles Array containing style information
+     *
      * @throws    PHPExcel_Exception
      * @return PHPExcel_Style_Borders
      */
@@ -220,7 +222,9 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
     {
         if (is_array($pStyles)) {
             if ($this->isSupervisor) {
-                $this->getActiveSheet()->getStyle($this->getSelectedCells())->applyFromArray($this->getStyleArray($pStyles));
+                $this->getActiveSheet()
+                    ->getStyle($this->getSelectedCells())
+                    ->applyFromArray($this->getStyleArray($pStyles));
             } else {
                 if (array_key_exists('left', $pStyles)) {
                     $this->getLeft()->applyFromArray($pStyles['left']);
@@ -390,6 +394,7 @@ class PHPExcel_Style_Borders extends PHPExcel_Style_Supervisor implements PHPExc
      * Set DiagonalDirection
      *
      * @param int $pValue
+     *
      * @return PHPExcel_Style_Borders
      */
     public function setDiagonalDirection($pValue = PHPExcel_Style_Borders::DIAGONAL_NONE)

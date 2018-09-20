@@ -39,11 +39,11 @@ class PHPExcel_Shared_File
     /**
      * Set the flag indicating whether the File Upload Temp directory should be used for temporary files
      *
-     * @param     boolean    $useUploadTempDir        Use File Upload Temporary directory (true or false)
+     * @param     boolean $useUploadTempDir Use File Upload Temporary directory (true or false)
      */
     public static function setUseUploadTempDirectory($useUploadTempDir = false)
     {
-        self::$useUploadTempDirectory = (boolean) $useUploadTempDir;
+        self::$useUploadTempDirectory = (boolean)$useUploadTempDir;
     }
 
 
@@ -59,11 +59,12 @@ class PHPExcel_Shared_File
 
 
     /**
-      * Verify if a file exists
-      *
-      * @param     string    $pFilename    Filename
-      * @return bool
-      */
+     * Verify if a file exists
+     *
+     * @param     string $pFilename Filename
+     *
+     * @return bool
+     */
     public static function file_exists($pFilename)
     {
         // Sick construction, but it seems that
@@ -92,6 +93,7 @@ class PHPExcel_Shared_File
      * Returns canonicalized absolute pathname, also for ZIP archives
      *
      * @param string $pFilename
+     *
      * @return string
      */
     public static function realpath($pFilename)

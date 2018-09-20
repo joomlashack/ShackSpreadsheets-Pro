@@ -19,6 +19,7 @@ class PHPExcel_Reader_Excel5_Color_BuiltIn
      * Map built-in color to RGB value
      *
      * @param int $color Indexed color
+     *
      * @return array
      */
     public static function lookup($color)
