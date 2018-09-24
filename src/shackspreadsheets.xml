@@ -33,10 +33,6 @@
             <folder>views</folder>
             <folder>lib</folder>
         </files>
-        <languages folder="admin/language">
-            <language tag="en-GB">en-GB/en-GB.com_shackspreadsheets.ini</language>
-            <language tag="en-GB">en-GB/en-GB.com_shackspreadsheets.sys.ini</language>
-        </languages>
     </administration>
 
     <config>
