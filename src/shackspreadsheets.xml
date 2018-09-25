@@ -17,7 +17,6 @@
         <filename>shackspreadsheets.php</filename>
     </files>
     <administration>
-        <menu>COM_SHACKSPREADSHEETS_COMPONENT_LABEL</menu>
         <files folder="admin">
             <filename>access.xml</filename>
             <filename>config.xml</filename>
