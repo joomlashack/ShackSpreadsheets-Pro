@@ -1,4 +1,8 @@
 builder.path=/path/to/AllediaBuilder
 
-project.AllediaInstaller.path=/path/to/AllediaInstaller
-project.AllediaFreeDefaultFiles.path=/path/to/AllediaFreeDefaultFiles
+project.AllediaInstaller.path=/Users/bill/Documents/Coding/Joomlashack/Components/AllediaInstaller
+project.AllediaFramework.path=/Users/bill/Documents/Coding/Joomlashack/Components/AllediaFramework
+project.AllediaFreeDefaultFiles.path=/Users/bill/Documents/Coding/Joomlashack/Components/AllediaFreeDefaultFiles
+project.AllediaProDefaultFiles.path=/Users/bill/Documents/Coding/Joomlashack/Components/AllediaProDefaultFiles
+
+project.hasFreeVersion=0
