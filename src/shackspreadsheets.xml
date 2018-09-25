@@ -18,8 +18,6 @@
     </files>
     <administration>
         <files folder="admin">
-            <filename>access.xml</filename>
-            <filename>config.xml</filename>
             <filename>controller.php</filename>
             <filename>shackspreadsheets.php</filename>
             <folder>controllers</folder>
