@@ -1,6 +1,6 @@
 {
     "name"             : "joomlashack/shackspreadsheets-pro",
-    "description"      : "Shack Editorial Calendar Pro",
+    "description"      : "Shack Spreadsheet Pro",
     "minimum-stability": "stable",
     "license"          : "GPL-2+",
     "type"             : "joomla.component",
