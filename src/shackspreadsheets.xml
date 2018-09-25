@@ -71,7 +71,7 @@
 
             <extension type="plugin"
                        group="editors-xtd"
-                       element="xtd_shackspreadsheets">plg_editors-xtd_shackspreadsheets</extension>
+                       element="shackspreadsheets">plg_editors-xtd_shackspreadsheets</extension>
         </relatedExtensions>
 
         <include>AllediaFreeDefaultFiles</include>
