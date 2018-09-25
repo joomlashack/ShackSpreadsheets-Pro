@@ -8,7 +8,7 @@
     <authorEmail>help@joomlashack.com</authorEmail>
     <authorUrl>https://www.joomlashack.com</authorUrl>
     <version>1.0.2b1</version>
-    <description>COM_SHACKSPREADSHEETS_XML_DESCRIPTION</description>
+    <description>COM_SHACKSPREADSHEETS_DESCRIPTION</description>
     <variant>PRO</variant>
 
     <scriptfile>script.installer.php</scriptfile>
