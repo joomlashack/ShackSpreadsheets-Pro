@@ -16,6 +16,14 @@
     <files folder="site">
         <filename>shackspreadsheets.php</filename>
     </files>
+
+    <media detination="com_shackspreadsheets" folder="media">
+        <folder>css</folder>
+        <folder>fonts</folder>
+        <folder>images</folder>
+        <folder>js</folder>
+    </media>
+
     <administration>
         <files folder="admin">
             <filename>controller.php</filename>
