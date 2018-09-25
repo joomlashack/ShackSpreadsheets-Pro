@@ -17,8 +17,7 @@
         <filename>shackspreadsheets.php</filename>
     </files>
     <administration>
-        <submenu>
-        </submenu>
+        <menu>COM_SHACKSPREADSHEETS</menu>
         <files folder="admin">
             <filename>access.xml</filename>
             <filename>config.xml</filename>
