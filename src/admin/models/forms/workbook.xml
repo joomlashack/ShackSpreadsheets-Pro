@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
     <fieldset>
-        <field
-            name="file_upload"
-            type="file"
-            label="COM_SHACKSPREADSHEETS_WORKBOOK_LABEL_FILE_UPLOAD"
-        />
+        <field name="file_upload"
+               type="file"
+               label="COM_SHACKSPREADSHEETS_WORKBOOK_LABEL_FILE_UPLOAD"/>
     </fieldset>
 </form>

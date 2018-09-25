@@ -25,7 +25,7 @@ class PlgButtonShackspreadsheets extends JPlugin
         $button          = new JObject;
         $button->modal   = true;
         $button->class   = 'btn';
-        $button->text    = JText::_('PLG_SHACKSPREADSHEETS_BUTTON_SHACKSPREADSHEETS');
+        $button->text    = JText::_('PLG_SHACKSPREADSHEETS_BUTTON_TEXT');
         $button->name    = 'arrow-down';
         $button->link    = 'index.php?option=com_shackspreadsheets&view=workbook&tmpl=component&name=' . $name;
         $button->options = "{handler: 'iframe', size: {x: 500, y: 300}}";

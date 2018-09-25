@@ -38,10 +38,8 @@
     </config>
 
     <updateservers>
-        <server type="extension" priority="1" name="Shack Spreadsheets Pro">
-            <![CDATA[https://deploy.ostraining.com/client/update/pro/stable/com_shackspreadsheets]]></server>
+        <server type="extension" priority="1" name="Shack Spreadsheets Pro"><![CDATA[https://deploy.ostraining.com/client/update/pro/stable/com_shackspreadsheets]]></server>
     </updateservers>
-
 
     <alledia>
         <element>shackspreadsheets</element>

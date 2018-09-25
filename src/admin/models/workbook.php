@@ -14,12 +14,19 @@ class ShackspreadsheetsModelWorkbook extends JModelForm
     public function getForm($data = array(), $loadData = false)
     {
         JForm::addFormPath(JPATH_COMPONENT_ADMINISTRATOR . '/models/forms');
-        $form = $this->loadForm('com_shackspreadsheets.workbook', 'workbook',
-            array('control' => 'jform', 'load_data' => $loadData));
+        $form = $this->loadForm(
+            'com_shackspreadsheets.workbook',
+            'workbook',
+            array(
+                'control'   => 'jform',
+                'load_data' => $loadData
+            )
+        );
 
-        if (empty($form)) {
-            return false;
+        if ($form) {
+            return $form;
         }
-        return $form;
+
+        return false;
     }
 }

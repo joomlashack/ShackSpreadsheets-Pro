@@ -9,7 +9,7 @@
 
 defined('_JEXEC') or die;
 
-require_once dirname(__FILE__) . '/../lib/PHPExcel/PHPExcel.php';
+require_once __DIR__ . '/../lib/PHPExcel/PHPExcel.php';
 
 class ShackspreadsheetsControllerWorkbook extends JControllerLegacy
 {
@@ -27,17 +27,20 @@ class ShackspreadsheetsControllerWorkbook extends JControllerLegacy
             $content  = $reader->load($filename);
             $data     = $content->getActiveSheet()->toArray(null, true, true, false);
 
-            $html = '<table>' . PHP_EOL;
+            $html = '<table>';
             foreach ($data as $row) {
-                $html .= '<tr>' . PHP_EOL . '<td>' . implode('</td>' . PHP_EOL . '<td>',
-                        $row) . '</td>' . PHP_EOL . '</tr>' . PHP_EOL;
+                $html .= '<tr><td>'
+                    . implode('</td><td>', $row)
+                    . '</td></tr>';
             }
-            $html .= '</table>' . PHP_EOL;
+
+            $html .= '</table>';
 
             JFactory::getApplication()->setUserState('shackspreadsheets.workbook.data', $html);
         } catch (Exception $e) {
-
+            // Ignore errors
         }
+
         $url = 'index.php?option=com_shackspreadsheets&view=workbook&tmpl=component&name=' . $editor;
         $this->setRedirect($url);
         $this->redirect();
