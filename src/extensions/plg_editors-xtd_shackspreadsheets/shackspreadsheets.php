@@ -15,7 +15,7 @@ class PlgButtonShackspreadsheets extends JPlugin
 {
     protected $autoloadLanguage = true;
 
-    public function __construct(& $subject, $config)
+    public function __construct(&$subject, $config)
     {
         return parent::__construct($subject, $config);
     }
