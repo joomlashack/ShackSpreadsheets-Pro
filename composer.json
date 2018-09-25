@@ -8,7 +8,7 @@
         "element"        : "com_shackspreadsheets",
         "element-short"  : "shackspreadsheets",
         "name"           : "Shack Spreadsheets Pro",
-        "client"         : "site",
+        "client"         : "administrator",
         "package-license": "pro"
     },
     "authors"          : [
