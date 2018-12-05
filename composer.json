@@ -17,7 +17,11 @@
             "email": "help@joomlashack.com"
         }
     ],
+    "config"           : {
+        "vendor-dir": "src/admin/vendor"
+    },
     "require"          : {
-        "php": ">= 5.6"
+        "php"                     : ">= 5.6",
+        "phpoffice/phpspreadsheet": "^1.5"
     }
 }

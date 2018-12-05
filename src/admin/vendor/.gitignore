@@ -1,0 +1,22 @@
+# Keep unneeded composer files out of repo
+##########################################
+*
+!.gitignore
+
+# Need the autoloaders
+!autoload.php
+!composer/
+!composer/*
+
+# PHPSpreadsheet
+!phpoffice/
+!phpoffice/phpspreadsheet/
+!phpoffice/phpspreadsheet/CHANGELOG*
+!phpoffice/phpspreadsheet/CONTRIBUTING.md
+!phpoffice/phpspreadsheet/LICENSE
+!phpoffice/phpspreadsheet/src/
+!phpoffice/phpspreadsheet/src/**/*
+!markbaker/
+!markbaker/**/*
+!psr/
+!psr/**/*

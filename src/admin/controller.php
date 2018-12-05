@@ -49,4 +49,11 @@ class ShackspreadsheetsController extends JControllerLegacy
 
         return $this;
     }
+
+    public function test()
+    {
+        require_once JPATH_COMPONENT_ADMINISTRATOR . '/vendor/autoload.php';
+
+        echo '<h3>' . __METHOD__ . '</h3>';
+    }
 }

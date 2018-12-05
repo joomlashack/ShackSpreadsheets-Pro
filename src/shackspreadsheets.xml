@@ -26,14 +26,16 @@
 
     <administration>
         <files folder="admin">
-            <filename>controller.php</filename>
-            <filename>shackspreadsheets.php</filename>
             <folder>controllers</folder>
             <folder>language</folder>
+            <folder>lib</folder>
             <folder>library</folder>
             <folder>models</folder>
+            <folder>vendor</folder>
             <folder>views</folder>
-            <folder>lib</folder>
+
+            <filename>controller.php</filename>
+            <filename>shackspreadsheets.php</filename>
         </files>
     </administration>
 
