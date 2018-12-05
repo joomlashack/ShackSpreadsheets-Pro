@@ -23,25 +23,31 @@
  * along with ShackSpreadsheets-Pro.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-defined('_JEXEC') or die;
+use PhpOffice\PhpSpreadsheet\IOFactory;
 
-require_once __DIR__ . '/../lib/PHPExcel/PHPExcel.php';
+defined('_JEXEC') or die;
 
 class ShackspreadsheetsControllerWorkbook extends JControllerLegacy
 {
+    /**
+     * @return void
+     * @throws Exception
+     */
     public function parsefile()
     {
-        JSession::checkToken() or die('Invalid Token');
+        if (!$this->checkToken('post', false)) {
+            die(JText::_('JINVALID_TOKEN'));
+        }
+
         $input  = JFactory::getApplication()->input;
         $editor = $input->get('editor');
         try {
             $files    = $input->files->get('jform');
             $filename = $files['file_upload']['tmp_name'];
 
-            $fileType = PHPExcel_IOFactory::identify($filename);
-            $reader   = PHPExcel_IOFactory::createReader($fileType);
-            $content  = $reader->load($filename);
-            $data     = $content->getActiveSheet()->toArray(null, true, true, false);
+            $reader      = IOFactory::createReaderForFile($filename);
+            $spreadsheet = $reader->load($filename);
+            $data        = $spreadsheet->getActiveSheet()->toArray(null, true, true, false);
 
             $html = '<table>';
             foreach ($data as $row) {
@@ -53,6 +59,7 @@ class ShackspreadsheetsControllerWorkbook extends JControllerLegacy
             $html .= '</table>';
 
             JFactory::getApplication()->setUserState('shackspreadsheets.workbook.data', $html);
+
         } catch (Exception $e) {
             // Ignore errors
         }

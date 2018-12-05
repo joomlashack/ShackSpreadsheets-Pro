@@ -25,7 +25,7 @@
 
 defined('_JEXEC') or die;
 
-JLoader::registerPrefix('Shackspreadsheets', JPATH_COMPONENT_ADMINISTRATOR);
+require_once JPATH_COMPONENT_ADMINISTRATOR . '/vendor/autoload.php';
 
 $controller = JControllerLegacy::getInstance('Shackspreadsheets', array('base_path' => JPATH_COMPONENT_ADMINISTRATOR));
 $controller->execute(JFactory::getApplication()->input->get('task'));
