@@ -40,6 +40,7 @@ class ShackspreadsheetsViewWorkbook extends JViewLegacy
         $app->setUserState('shackspreadsheets.workbook.data', '');
         $this->editor = $app->input->get('name');
         $this->form   = $this->get('Form');
+
         parent::display($tpl);
     }
 }

@@ -26,9 +26,14 @@
 defined('_JEXEC') or die;
 
 JHtml::_('jquery.framework');
+
+$actionQuery = array(
+    'option' => 'com_shackspreadsheets',
+    'task'   => 'workbook.parsefile',
+    'editor' => $this->editor
+);
 ?>
     <script type="text/javascript">
-        <!--
         (function($, doc) {
             'use strict';
 
@@ -55,7 +60,7 @@ JHtml::_('jquery.framework');
                     $.each((q || '').split(/[&;]/), function(key, val) {
                         var keys = val.split('=');
 
-                        rs[keys[0]] = keys.length == 2 ? keys[1] : null;
+                        rs[keys[0]] = keys.length === 2 ? keys[1] : null;
                     });
 
                     return rs;
@@ -63,9 +68,22 @@ JHtml::_('jquery.framework');
 
                 getUriObject: function(u) {
                     var bitsAssociate = {},
-                        bits          = u.match(/^(?:([^:\/?#.]+):)?(?:\/\/)?(([^:\/?#]*)(?::(\d*))?)((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[\?#]|$)))*\/?)?([^?#\/]*))?(?:\?([^#]*))?(?:#(.*))?/);
+                        parts         = [
+                            'uri',
+                            'scheme',
+                            'authority',
+                            'domain',
+                            'port',
+                            'path',
+                            'directory',
+                            'file',
+                            'query',
+                            'fragment'
+                        ];
 
-                    $.each(['uri', 'scheme', 'authority', 'domain', 'port', 'path', 'directory', 'file', 'query', 'fragment'], function(key, index) {
+                    var bits = u.match(/^(?:([^:\/?#.]+):)?(?:\/\/)?(([^:\/?#]*)(?::(\d*))?)((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[\?#]|$)))*\/?)?([^?#\/]*))?(?:\?([^#]*))?(?:#(.*))?/);
+
+                    $.each(parts, function(key, index) {
                         bitsAssociate[index] = (!!bits && !!bits[key]) ? bits[key] : '';
                     });
 
@@ -77,27 +95,29 @@ JHtml::_('jquery.framework');
                 window.Shackspreadsheets.initialize();
             });
         }(jQuery, document));
-        //-->
     </script>
     <form enctype="multipart/form-data"
           method="post"
-          action="<?php echo JRoute::_('index.php?option=com_shackspreadsheets&task=workbook.parsefile&editor=' . $this->editor); ?>">
+          action="<?php echo JRoute::_('index.php?' . http_build_query($actionQuery)); ?>">
         <?php
         echo $this->form->renderField('file_upload');
         echo JHtml::_('form.token');
+
+        echo sprintf(
+            '<button type="submit" class="btn btn-success">%s</button>',
+            JText::_('COM_SHACKSPREADSHEETS_WORKBOOK_BUTTON_PARSE')
+        );
         ?>
-        <button type="submit"><?php echo JText::_('COM_SHACKSPREADSHEETS_WORKBOOK_BUTTON_PARSE'); ?></button>
     </form>
 <?php
-if ($this->data != '') :
-    ?>
-    <button
-        onclick="Shackspreadsheets.insert();window.parent.jModalClose();"><?php echo JText::_('COM_SHACKSPREADSHEETS_WORKBOOK_BUTTON_INSERT'); ?></button>
-    <div id="data">
-        <?php echo $this->data; ?>
-    </div>
-    <button
-        onclick="Shackspreadsheets.insert();window.parent.jModalClose();"><?php echo JText::_('COM_SHACKSPREADSHEETS_WORKBOOK_BUTTON_INSERT'); ?></button>
-<?php
+if ($this->data) :
+    $insertButton = sprintf(
+        '<button class="btn btn-success" onclick="Shackspreadsheets.insert();window.parent.jModalClose();">%s</button>',
+        JText::_('COM_SHACKSPREADSHEETS_WORKBOOK_BUTTON_INSERT')
+    );
+
+    echo $insertButton
+        . sprintf('<div id="data">%s</div>', $this->data)
+        . $insertButton;
 endif;
 
