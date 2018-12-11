@@ -14,4 +14,15 @@
         <filename plugin="shackspreadsheets">shackspreadsheets.php</filename>
         <folder>language</folder>
     </files>
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="tableClass"
+                       label="PLG_EDITORS-XTD_SHACKSPREADSHEETS_CONFIG_TABLE_CLASS_LABEL"
+                       description="PLG_EDITORS-XTD_SHACKSPREADSHEETS_CONFIG_TABLE_CLASS_DESC"
+                       type="text"/>
+            </fieldset>
+        </fields>
+    </config>
 </extension>

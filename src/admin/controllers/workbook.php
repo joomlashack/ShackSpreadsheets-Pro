@@ -41,6 +41,9 @@ class ShackspreadsheetsControllerWorkbook extends JControllerLegacy
 
         $input = JFactory::getApplication()->input;
 
+        $plugin = JPluginHelper::getPlugin('editors-xtd', 'shackspreadsheets');
+        $params = new \Joomla\Registry\Registry(empty($plugin->params) ? null : $plugin->params);
+
         try {
             $files    = $input->files->get('jform');
             $filename = $files['file_upload']['tmp_name'];
@@ -50,7 +53,13 @@ class ShackspreadsheetsControllerWorkbook extends JControllerLegacy
 
             $data = $spreadsheet->getActiveSheet();
 
-            $html = array('<table>');
+            if ($tableClass = $params->get('tableClass')) {
+                $html = array(sprintf('<table class="%s">', $tableClass));
+
+            } else {
+                $html = array('<table>');
+            }
+
             $rows = $data->getRowIterator();
             foreach ($rows as $row) {
                 $html[] = '<tr>';
