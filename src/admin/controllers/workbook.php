@@ -39,24 +39,46 @@ class ShackspreadsheetsControllerWorkbook extends JControllerLegacy
             die(JText::_('JINVALID_TOKEN'));
         }
 
-        $input  = JFactory::getApplication()->input;
-        $editor = $input->get('editor');
+        $input = JFactory::getApplication()->input;
+
         try {
             $files    = $input->files->get('jform');
             $filename = $files['file_upload']['tmp_name'];
 
             $reader      = IOFactory::createReaderForFile($filename);
             $spreadsheet = $reader->load($filename);
-            $data        = $spreadsheet->getActiveSheet()->toArray(null, true, true, false);
 
-            $html = '<table>';
-            foreach ($data as $row) {
-                $html .= '<tr><td>'
-                    . implode('</td><td>', $row)
-                    . '</td></tr>';
+            $data = $spreadsheet->getActiveSheet();
+
+            $html = array('<table>');
+            $rows = $data->getRowIterator();
+            foreach ($rows as $row) {
+                $html[] = '<tr>';
+                $cells  = $row->getCellIterator();
+                foreach ($cells as $cell) {
+                    if ($cell->hasHyperlink()) {
+                        $value = sprintf(
+                            '<a href="%s">%s</a>',
+                            $cell->getHyperlink()->getUrl(),
+                            $cell->getFormattedValue()
+                        );
+
+                    } elseif ($cell->isFormula()) {
+                        $x = $cell->getOldCalculatedValue();
+                        $cell->setValue($x);
+                        $value = $cell->getFormattedValue();
+
+                    } else {
+                        $value = $cell->getFormattedValue();
+                    }
+
+                    $html[] = sprintf('<td>%s</td>', $value);
+                }
+                $html[] = '</tr>';
             }
+            $html[] = '</table>';
 
-            $html .= '</table>';
+            $html = join("\n", $html);
 
             JFactory::getApplication()->setUserState('shackspreadsheets.workbook.data', $html);
 
@@ -64,7 +86,8 @@ class ShackspreadsheetsControllerWorkbook extends JControllerLegacy
             // Ignore errors
         }
 
-        $url = 'index.php?option=com_shackspreadsheets&view=workbook&tmpl=component&name=' . $editor;
+        $editor = $input->get('editor');
+        $url    = 'index.php?option=com_shackspreadsheets&view=workbook&tmpl=component&name=' . $editor;
         $this->setRedirect($url);
         $this->redirect();
     }
