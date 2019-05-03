@@ -9,7 +9,9 @@
         "element-short"  : "shackspreadsheets",
         "name"           : "Shack Spreadsheets Pro",
         "client"         : "administrator",
-        "package-license": "pro"
+        "package-license": "pro",
+        "target-platform": "3.*",
+        "infourl"        : "/changelog/shack-spreadsheets/"
     },
     "authors"          : [
         {
