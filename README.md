@@ -2,12 +2,9 @@
 
 ## About
 
-**Shack Spreadsheets Pro is a fork of PixParse after it was acquired by Joomlashack.**
+** This extension is free to use on Joomla 3. We will not be updating it for Joomla 4.
  
-It provides an editor button to import table oriented files into articles by implementing PHPOffice'
- [PHPSpreadhsheet library](https://github.com/PHPOffice/PhpSpreadsheet).
- 
-#### Currently supported file formats
+#### Supported file formats
 
 * Open Document Format/OASIS (.ods)
 * Office Open XML, Excel 2007 and above (.xlsx)
